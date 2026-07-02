@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from hindsight.cli import main, run_benchmark
+from hindsight.cli import main, parse_date_spec, run_benchmark
 from hindsight.core.events import Side
 from hindsight.data.hyperliquid_adapter import HyperliquidMarkoutRecord
 from hindsight.data.lake import HyperliquidLakeLayout, write_parquet_records
@@ -125,6 +125,45 @@ def test_leaderboard_formats_numeric_diagnostics(tmp_path: Path) -> None:
     assert ",0.25\n" in text
 
 
+def test_parse_date_spec_accepts_lists_ranges_and_dedupes() -> None:
+    assert parse_date_spec("20260101,20260102..20260103,20260101") == (
+        "20260101",
+        "20260102",
+        "20260103",
+    )
+
+    with pytest.raises(ValueError, match="YYYYMMDD"):
+        parse_date_spec("2026-01-01")
+    with pytest.raises(ValueError, match="empty"):
+        parse_date_spec(" , ")
+    with pytest.raises(ValueError, match="YYYYMMDD"):
+        parse_date_spec("20260230")
+    with pytest.raises(ValueError, match="end"):
+        parse_date_spec("20260103..20260101")
+
+
+def test_run_benchmark_validates_dates_and_limit_before_loading(tmp_path: Path) -> None:
+    kwargs = {
+        "lake_root": tmp_path / "lake",
+        "output_dir": tmp_path / "out",
+        "symbol": "SOL-PERP",
+        "date": "20260101",
+        "horizon": "10s",
+        "label_horizon_seconds": 10,
+        "n_folds": 1,
+        "train_window": 2,
+        "test_window": 1,
+        "purge_seconds": 0,
+        "embargo_seconds": 0,
+        "include_leaky": False,
+    }
+
+    with pytest.raises(ValueError, match="at least one date"):
+        run_benchmark(limit=1, dates=(), **kwargs)
+    with pytest.raises(ValueError, match="limit"):
+        run_benchmark(limit=0, dates=("20260101",), **kwargs)
+
+
 def test_leaky_policy_fails_benchmark_run() -> None:
     rows = records()
 
@@ -141,6 +180,101 @@ def test_leaky_policy_fails_benchmark_run() -> None:
             target_name="markout_bps_10s",
             fail_on_leakage=True,
         )
+
+
+def test_run_benchmark_limit_applies_across_date_panel(tmp_path: Path) -> None:
+    layout = HyperliquidLakeLayout(tmp_path / "lake")
+    write_parquet_records(
+        layout.gold_markout_path("SOL", "20260101"),
+        [
+            {
+                "coin": "SOL",
+                "ts_ms": int((NOW + timedelta(seconds=index * 20)).timestamp() * 1000),
+                "px": 100.0 + index,
+                "sz": 1.0,
+                "side": "B" if index % 2 == 0 else "A",
+                "crossed": False,
+                "maker_side": 1 if index % 2 == 0 else -1,
+                "oid": index,
+                "tid": index,
+                "markout_bps_10s": float(index - 1),
+                "toxic_10s": index < 1,
+            }
+            for index in range(4)
+        ],
+    )
+
+    artifacts = run_benchmark(
+        lake_root=tmp_path / "lake",
+        output_dir=tmp_path / "out",
+        symbol="SOL-PERP",
+        date="20260101",
+        dates=("20260101", "20260102"),
+        limit=4,
+        horizon="10s",
+        label_horizon_seconds=10,
+        n_folds=1,
+        train_window=2,
+        test_window=1,
+        purge_seconds=0,
+        embargo_seconds=0,
+        include_leaky=False,
+    )
+
+    assert artifacts.csv_path.exists()
+    assert len(artifacts.result.rows) == 2
+
+
+def test_benchmark_cli_accepts_date_ranges(tmp_path: Path) -> None:
+    layout = HyperliquidLakeLayout(tmp_path / "lake")
+    for date, offset in (("20260101", 0), ("20260102", 4)):
+        write_parquet_records(
+            layout.gold_markout_path("SOL", date),
+            [
+                {
+                    "coin": "SOL",
+                    "ts_ms": int(
+                        (NOW + timedelta(seconds=(offset + index) * 20)).timestamp() * 1000
+                    ),
+                    "px": 100.0 + offset + index,
+                    "sz": 1.0,
+                    "side": "B" if index % 2 == 0 else "A",
+                    "crossed": False,
+                    "maker_side": 1 if index % 2 == 0 else -1,
+                    "oid": offset + index,
+                    "tid": offset + index,
+                    "markout_bps_10s": float(offset + index - 3),
+                    "toxic_10s": offset + index < 3,
+                }
+                for index in range(4)
+            ],
+        )
+    output = tmp_path / "out"
+
+    exit_code = main([
+        "benchmark",
+        "--lake-root",
+        str(tmp_path / "lake"),
+        "--output-dir",
+        str(output),
+        "--symbol",
+        "SOL-PERP",
+        "--dates",
+        "20260101..20260102",
+        "--limit",
+        "8",
+        "--train-window",
+        "4",
+        "--test-window",
+        "2",
+        "--n-folds",
+        "2",
+    ])
+
+    assert exit_code == 0
+    assert (output / "hindsight-leaderboard.csv").exists()
+    leakage = json.loads((output / "leakage.json").read_text(encoding="utf-8"))
+    assert leakage["verdict"] == "pass"
 
 
 def test_benchmark_cli_writes_leaderboard(tmp_path: Path) -> None:

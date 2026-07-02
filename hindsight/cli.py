@@ -6,14 +6,14 @@ import argparse
 from collections import Counter
 from collections.abc import Sequence
 from dataclasses import dataclass
-from datetime import timedelta
+from datetime import datetime, timedelta
 from pathlib import Path
 
 from hindsight import __version__
 from hindsight.core.clock import ReplayClock
 from hindsight.core.events import CanonicalEvent
 from hindsight.core.hashing import run_hash, stable_hash
-from hindsight.data.hyperliquid_adapter import HyperliquidLakeAdapter
+from hindsight.data.hyperliquid_adapter import HyperliquidLakeAdapter, HyperliquidMarkoutRecord
 from hindsight.demo import run_demo
 from hindsight.evaluation.benchmark import (
     BenchmarkResult,
@@ -183,9 +183,18 @@ def run_benchmark(
     purge_seconds: float,
     embargo_seconds: float,
     include_leaky: bool,
+    dates: tuple[str, ...] | None = None,
 ) -> BenchmarkArtifacts:
     adapter = HyperliquidLakeAdapter(lake_root)
-    records = adapter.load_markouts(symbol=symbol, date=date, limit=limit)
+    benchmark_dates = dates if dates is not None else (date,)
+    if not benchmark_dates:
+        raise ValueError("benchmark requires at least one date")
+    records = _load_markout_records(
+        adapter,
+        symbol=symbol,
+        dates=benchmark_dates,
+        limit=limit,
+    )
     if not records:
         raise FileNotFoundError(f"No Hyperliquid markout rows loaded for {symbol.upper()}")
     intervals = label_intervals(records, horizon=timedelta(seconds=label_horizon_seconds))
@@ -223,6 +232,20 @@ def run_benchmark(
     return BenchmarkArtifacts(csv_path=csv_path, leakage_path=leakage_path, result=result)
 
 
+def parse_date_spec(value: str) -> tuple[str, ...]:
+    """Parse comma-separated YYYYMMDD dates and inclusive YYYYMMDD..YYYYMMDD ranges."""
+
+    dates: list[str] = []
+    for token in _split_csv(value):
+        if ".." in token:
+            dates.extend(_expand_date_range(token))
+        else:
+            dates.append(_validate_date(token))
+    if not dates:
+        raise ValueError("date spec cannot be empty")
+    return tuple(dict.fromkeys(dates))
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="hindsight")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -248,6 +271,7 @@ def build_parser() -> argparse.ArgumentParser:
     benchmark_parser.add_argument("--output-dir", type=Path, default=Path("reports/hindsight"))
     benchmark_parser.add_argument("--symbol", default="SOL-PERP")
     benchmark_parser.add_argument("--date", default="20260101")
+    benchmark_parser.add_argument("--dates")
     benchmark_parser.add_argument("--limit", type=int, default=120)
     benchmark_parser.add_argument("--horizon", default="10s")
     benchmark_parser.add_argument("--label-horizon-seconds", type=float, default=10.0)
@@ -282,6 +306,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             output_dir=args.output_dir,
             symbol=args.symbol,
             date=args.date,
+            dates=parse_date_spec(args.dates) if args.dates is not None else None,
             limit=args.limit,
             horizon=args.horizon,
             label_horizon_seconds=args.label_horizon_seconds,
@@ -333,6 +358,54 @@ def main(argv: Sequence[str] | None = None) -> int:
 
 def _event_record(event: CanonicalEvent) -> dict[str, object]:
     return dict(event.model_dump(mode="json"))
+
+
+def _load_markout_records(
+    adapter: HyperliquidLakeAdapter,
+    *,
+    symbol: str,
+    dates: tuple[str, ...],
+    limit: int,
+) -> list[HyperliquidMarkoutRecord]:
+    if limit < 1:
+        raise ValueError("limit must be positive")
+    records: list[HyperliquidMarkoutRecord] = []
+    remaining = limit
+    for date in dates:
+        if remaining <= 0:
+            break
+        date_records = adapter.load_markouts(symbol=symbol, date=date, limit=remaining)
+        records.extend(date_records)
+        remaining = limit - len(records)
+    return records
+
+
+def _split_csv(value: str) -> tuple[str, ...]:
+    return tuple(item.strip() for item in value.split(",") if item.strip())
+
+
+def _validate_date(value: str) -> str:
+    if len(value) != 8 or not value.isdigit():
+        raise ValueError(f"invalid YYYYMMDD date: {value}")
+    try:
+        datetime.strptime(value, "%Y%m%d")
+    except ValueError as exc:
+        raise ValueError(f"invalid YYYYMMDD date: {value}") from exc
+    return value
+
+
+def _expand_date_range(value: str) -> list[str]:
+    start_text, end_text = value.split("..", 1)
+    start = datetime.strptime(_validate_date(start_text), "%Y%m%d").date()
+    end = datetime.strptime(_validate_date(end_text), "%Y%m%d").date()
+    if end < start:
+        raise ValueError("date range end must be >= start")
+    dates: list[str] = []
+    current = start
+    while current <= end:
+        dates.append(current.strftime("%Y%m%d"))
+        current += timedelta(days=1)
+    return dates
 
 
 if __name__ == "__main__":  # pragma: no cover
