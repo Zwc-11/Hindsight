@@ -165,7 +165,7 @@ class CatBoostMarkoutAdapter:
         raw_probability = _validate_probability(float(probability_row[1]), "raw_probability")
         probability = self.calibrator.transform(raw_probability)
         threshold = self.calibrator.decision_threshold
-        quote = None if threshold is None else probability >= threshold
+        quote = None if threshold is None else probability < threshold
         return CatBoostMarkoutPrediction(
             raw_probability=raw_probability,
             probability=probability,

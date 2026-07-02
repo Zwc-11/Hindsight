@@ -111,7 +111,21 @@ def test_adapter_loads_predicts_and_calibrates(
     assert seen_matrices == [[[2.0, -1.0]]]
     assert predictions[0].raw_probability == pytest.approx(0.25)
     assert predictions[0].probability == pytest.approx(0.35)
-    assert predictions[0].quote is True
+    assert predictions[0].quote is False
+
+
+def test_adapter_quotes_below_deployment_skip_threshold(tmp_path: Path) -> None:
+    calibrator_path = tmp_path / "calibrator.json"
+    write_calibrator(calibrator_path)
+    adapter = CatBoostMarkoutAdapter(
+        model=SimpleNamespace(predict_proba=lambda matrix: [[1.0, 0.0]]),
+        calibrator=CatBoostCalibrator.from_json(calibrator_path),
+    )
+
+    prediction = adapter.predict_rows([{"a": 1.0, "b": 2.0}])[0]
+
+    assert prediction.probability == pytest.approx(0.2)
+    assert prediction.quote is True
 
 
 @pytest.mark.parametrize(
