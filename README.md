@@ -110,6 +110,11 @@ demo artifacts live in [examples/runs/demo](examples/runs/demo). Real or license
 benchmark artifacts belong in [docs/benchmarks](docs/benchmarks) and must record
 the producing command.
 
+The current real-data proof artifact is a local Hyperliquid SOL run:
+[docs/benchmarks/2026-07-02-local-hyperliquid-sol-20260527](docs/benchmarks/2026-07-02-local-hyperliquid-sol-20260527).
+It commits benchmark output and source-file hashes only; raw market data is not
+redistributed.
+
 ## Related Work
 
 | Tool | Focus | Fill Realism | Venues | ML Evaluation Features | Verdict |

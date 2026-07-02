@@ -47,3 +47,8 @@ For public claims, commit the generated report artifact and document:
 - row count
 - command used to produce the artifact
 - content hash or run manifest
+
+The first local-real benchmark proof is
+[2026-07-02-local-hyperliquid-sol-20260527](benchmarks/2026-07-02-local-hyperliquid-sol-20260527).
+It uses a gitignored local MarketImmune lake file and commits only the benchmark
+CSV plus provenance hashes.

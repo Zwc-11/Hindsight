@@ -10,5 +10,8 @@ Rules:
 - Synthetic demo artifacts belong under `examples/runs/`; real or licensed
   benchmark artifacts belong here.
 
-Current status: no real-data benchmark artifact is committed in this standalone
-repo yet.
+Artifacts:
+
+- [2026-07-02 local Hyperliquid SOL benchmark](2026-07-02-local-hyperliquid-sol-20260527)
+  uses a local real Hyperliquid lake file and commits provenance plus benchmark
+  output only. Raw market data is not committed.
