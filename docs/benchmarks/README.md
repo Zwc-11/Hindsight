@@ -15,3 +15,7 @@ Artifacts:
 - [2026-07-02 local Hyperliquid SOL benchmark](2026-07-02-local-hyperliquid-sol-20260527)
   uses a local real Hyperliquid lake file and commits provenance plus benchmark
   output only. Raw market data is not committed.
+- [2026-07-02 local Hyperliquid SOL CatBoost validation](2026-07-02-local-hyperliquid-sol-catboost-20260527-20260601)
+  replays the promoted MarketImmune CatBoost markout model over full local SOL
+  holdout and panel partitions, with reconciliation against the MarketImmune
+  holdout report.

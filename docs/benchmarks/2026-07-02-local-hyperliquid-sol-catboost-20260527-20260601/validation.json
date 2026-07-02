@@ -1,0 +1,283 @@
+{
+  "caveats": [
+    "Raw MarketImmune market data and model files are local machine inputs, not committed.",
+    "Panel replay scores the promoted final model over all requested dates; it is not an out-of-fold training metric."
+  ],
+  "coin": "SOL",
+  "command": "python docs/benchmarks/2026-07-02-local-hyperliquid-sol-catboost-20260527-20260601/generate.py",
+  "data_label": "[local real Hyperliquid lake]",
+  "decision_threshold": 0.3,
+  "hindsight_git_sha": "976edb29e22edde0e4622de864b0c7412d130b5f",
+  "holdout": {
+    "metrics": {
+      "baseline_markout_bps": -0.7912483773688148,
+      "brier": 0.23320601294418586,
+      "ece": 0.0270673987519088,
+      "markout_lift_bps": 0.8603969586966207,
+      "n_rows": 210530,
+      "policy_markout_bps": 0.06914858132780587,
+      "pr_auc": 0.5562060309668825,
+      "quote_rate": 0.24593169619531657,
+      "test_end_ms": 1780358383412.0,
+      "test_start_ms": 1780272011755.0
+    },
+    "model_name": "hindsight_catboost_SOL_20260601_10s_holdout",
+    "partitions": [
+      {
+        "date": "20260601",
+        "metrics": {
+          "baseline_markout_bps": -0.7912483773688148,
+          "brier": 0.23320601294418586,
+          "ece": 0.0270673987519088,
+          "markout_lift_bps": 0.8603969586966207,
+          "n_rows": 210530,
+          "policy_markout_bps": 0.06914858132780587,
+          "pr_auc": 0.5562060309668825,
+          "quote_rate": 0.24593169619531657,
+          "test_end_ms": 1780358383412.0,
+          "test_start_ms": 1780272011755.0
+        },
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\training\\SOL\\SOL-training-20260601.parquet",
+        "sha256": "b67450a94dfb4d4c075d2a515e46e4940ae48b3bb62ced859cbf1387fdc0c830"
+      }
+    ],
+    "probability_summary": {
+      "max": 1.0,
+      "min": 0.0,
+      "p50": 0.40394683850181223,
+      "p95": 0.6456921587608904
+    },
+    "raw_probability_summary": {
+      "max": 0.8944581121021478,
+      "min": 0.11261419659557653,
+      "p50": 0.409767318371972,
+      "p95": 0.6373813089422344
+    }
+  },
+  "holdout_date": "20260601",
+  "horizon": "10s",
+  "marketimmune_holdout_reference": {
+    "brier": 0.23320601294418586,
+    "ece": 0.027067398751908806,
+    "markout_lift_bps": 0.8603969586966207,
+    "n_rows": 210530,
+    "pr_auc": 0.5562060309668823,
+    "quote_rate": 0.24593169619531657
+  },
+  "model_label": "[real-model]",
+  "panel_dates": [
+    "20260527",
+    "20260528",
+    "20260529",
+    "20260530",
+    "20260531",
+    "20260601"
+  ],
+  "panel_replay": {
+    "metrics": {
+      "baseline_markout_bps": -0.7622404115868562,
+      "brier": 0.21298435665375168,
+      "ece": 0.013041290475929812,
+      "markout_lift_bps": 0.9542075921575426,
+      "n_rows": 934680,
+      "policy_markout_bps": 0.19196718057068646,
+      "pr_auc": 0.6064384870338012,
+      "quote_rate": 0.29838447383061584,
+      "test_end_ms": 1780358383412.0,
+      "test_start_ms": 1779840018910.0
+    },
+    "model_name": "hindsight_catboost_SOL_20260527_20260601_10s_panel_replay",
+    "partitions": [
+      {
+        "date": "20260527",
+        "metrics": {
+          "baseline_markout_bps": -0.8285736432114236,
+          "brier": 0.2104674676968643,
+          "ece": 0.020409019155050674,
+          "markout_lift_bps": 1.060858684384569,
+          "n_rows": 191634,
+          "policy_markout_bps": 0.23228504117314563,
+          "pr_auc": 0.628768056059037,
+          "quote_rate": 0.3057286285314714,
+          "test_end_ms": 1779926387581.0,
+          "test_start_ms": 1779840018910.0
+        },
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\training\\SOL\\SOL-training-20260527.parquet",
+        "sha256": "c897d27c8614ad2e82535252866d610d9c072d657590c693c42b5cf182807b17"
+      },
+      {
+        "date": "20260528",
+        "metrics": {
+          "baseline_markout_bps": -0.7808374344641381,
+          "brier": 0.213570855884586,
+          "ece": 0.020352581763739927,
+          "markout_lift_bps": 1.0440344560562351,
+          "n_rows": 208030,
+          "policy_markout_bps": 0.26319702159209707,
+          "pr_auc": 0.619896586320497,
+          "quote_rate": 0.23951353170215833,
+          "test_end_ms": 1780012784900.0,
+          "test_start_ms": 1779926412387.0
+        },
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\training\\SOL\\SOL-training-20260528.parquet",
+        "sha256": "573841cb666b9edf28fee9460e05df4462c541ca25b581d38601a277b2086ed3"
+      },
+      {
+        "date": "20260529",
+        "metrics": {
+          "baseline_markout_bps": -0.7211019884514228,
+          "brier": 0.21652443321658393,
+          "ece": 0.017027603363756666,
+          "markout_lift_bps": 1.0074843427079845,
+          "n_rows": 147758,
+          "policy_markout_bps": 0.2863823542565618,
+          "pr_auc": 0.6142734630785307,
+          "quote_rate": 0.2875106593213227,
+          "test_end_ms": 1780099173116.0,
+          "test_start_ms": 1780012815874.0
+        },
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\training\\SOL\\SOL-training-20260529.parquet",
+        "sha256": "813a9ebc8b513cacedf244ac95f22ff5362140de7862620b0f12f8b220205bab"
+      },
+      {
+        "date": "20260530",
+        "metrics": {
+          "baseline_markout_bps": -0.7844304453115887,
+          "brier": 0.18225155029263418,
+          "ece": 0.03523380931821431,
+          "markout_lift_bps": 0.82837417404651,
+          "n_rows": 75832,
+          "policy_markout_bps": 0.04394372873492131,
+          "pr_auc": 0.608557351582653,
+          "quote_rate": 0.4730456799240426,
+          "test_end_ms": 1780185587239.0,
+          "test_start_ms": 1780099217159.0
+        },
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\training\\SOL\\SOL-training-20260530.parquet",
+        "sha256": "7d2819072e877751b00fc908ce10a956b57b298b9732474b92d88475a259a095"
+      },
+      {
+        "date": "20260531",
+        "metrics": {
+          "baseline_markout_bps": -0.5809480736730879,
+          "brier": 0.19227493609945706,
+          "ece": 0.030946732506849543,
+          "markout_lift_bps": 0.7787341186027193,
+          "n_rows": 100896,
+          "policy_markout_bps": 0.1977860449296315,
+          "pr_auc": 0.6279674957938707,
+          "quote_rate": 0.39991674595623217,
+          "test_end_ms": 1780271979861.0,
+          "test_start_ms": 1780185619571.0
+        },
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\training\\SOL\\SOL-training-20260531.parquet",
+        "sha256": "299ca83a2fca6c66f25fcf00ba567a8b7709b3c0740b00d2b4349827e3d1f4bf"
+      },
+      {
+        "date": "20260601",
+        "metrics": {
+          "baseline_markout_bps": -0.7912483773688148,
+          "brier": 0.23320601294418586,
+          "ece": 0.0270673987519088,
+          "markout_lift_bps": 0.8603969586966207,
+          "n_rows": 210530,
+          "policy_markout_bps": 0.06914858132780587,
+          "pr_auc": 0.5562060309668825,
+          "quote_rate": 0.24593169619531657,
+          "test_end_ms": 1780358383412.0,
+          "test_start_ms": 1780272011755.0
+        },
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\training\\SOL\\SOL-training-20260601.parquet",
+        "sha256": "b67450a94dfb4d4c075d2a515e46e4940ae48b3bb62ced859cbf1387fdc0c830"
+      }
+    ],
+    "probability_summary": {
+      "max": 1.0,
+      "min": 0.0,
+      "p50": 0.4015748031496063,
+      "p95": 0.6510989010989011
+    },
+    "raw_probability_summary": {
+      "max": 0.9632467820615989,
+      "min": 0.04040049669269762,
+      "p50": 0.39767979520567354,
+      "p95": 0.6398772387120403
+    }
+  },
+  "reconciliation": {
+    "deltas": {
+      "brier": 0.0,
+      "ece": -6.938893903907228e-18,
+      "markout_lift_bps": 0.0,
+      "pr_auc": 2.220446049250313e-16,
+      "quote_rate": 0.0
+    },
+    "float_tolerance": 1e-12,
+    "max_abs_delta": 2.220446049250313e-16,
+    "row_delta": 0,
+    "verdict": "pass"
+  },
+  "schema_version": "1.0.0",
+  "sources": {
+    "calibrator": {
+      "bytes": 10707,
+      "path": "C:\\MarketImmune\\data\\models\\hyperliquid_catboost_SOL_20260527_20260531_holdout_20260601_10s.isotonic.json",
+      "sha256": "33a922611a62ff525898ad4f105a1d69c53cc62a1621473e01eb59f2dee3f195"
+    },
+    "marketimmune_reference_report": {
+      "bytes": 24020,
+      "path": "C:\\MarketImmune\\docs\\benchmarks\\hyperliquid_markout_SOL_20260527_20260531_holdout_20260601.json",
+      "sha256": "307b56dbb42176f05a31adbc08f1a1254fe7f950a94b26fb710074a95b701da5"
+    },
+    "model": {
+      "bytes": 180120,
+      "path": "C:\\MarketImmune\\data\\models\\hyperliquid_catboost_SOL_20260527_20260531_holdout_20260601_10s.cbm",
+      "sha256": "bc9813f2f9afe0c597066fd0c52a20cbaaced9c02b4b6790322bce9e968b75f9"
+    },
+    "training_partitions": [
+      {
+        "bytes": 8067901,
+        "date": "20260527",
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\training\\SOL\\SOL-training-20260527.parquet",
+        "sha256": "c897d27c8614ad2e82535252866d610d9c072d657590c693c42b5cf182807b17"
+      },
+      {
+        "bytes": 8340943,
+        "date": "20260528",
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\training\\SOL\\SOL-training-20260528.parquet",
+        "sha256": "573841cb666b9edf28fee9460e05df4462c541ca25b581d38601a277b2086ed3"
+      },
+      {
+        "bytes": 6237399,
+        "date": "20260529",
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\training\\SOL\\SOL-training-20260529.parquet",
+        "sha256": "813a9ebc8b513cacedf244ac95f22ff5362140de7862620b0f12f8b220205bab"
+      },
+      {
+        "bytes": 3238973,
+        "date": "20260530",
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\training\\SOL\\SOL-training-20260530.parquet",
+        "sha256": "7d2819072e877751b00fc908ce10a956b57b298b9732474b92d88475a259a095"
+      },
+      {
+        "bytes": 4143980,
+        "date": "20260531",
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\training\\SOL\\SOL-training-20260531.parquet",
+        "sha256": "299ca83a2fca6c66f25fcf00ba567a8b7709b3c0740b00d2b4349827e3d1f4bf"
+      },
+      {
+        "bytes": 8293088,
+        "date": "20260601",
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\training\\SOL\\SOL-training-20260601.parquet",
+        "sha256": "b67450a94dfb4d4c075d2a515e46e4940ae48b3bb62ced859cbf1387fdc0c830"
+      }
+    ]
+  },
+  "train_dates": [
+    "20260527",
+    "20260528",
+    "20260529",
+    "20260530",
+    "20260531"
+  ]
+}
