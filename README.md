@@ -1,5 +1,7 @@
 # Hindsight
 
+[![ci](https://github.com/Zwc-11/Hindsight/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Zwc-11/Hindsight/actions/workflows/ci.yml)
+
 The backtester that catches you lying to yourself.
 
 Leakage-audited, point-in-time, reproducible evaluation for Hyperliquid
