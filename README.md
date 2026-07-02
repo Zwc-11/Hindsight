@@ -10,6 +10,12 @@ MarketImmune. It focuses on correctness of research evaluation: deterministic
 event replay, point-in-time feature access, purged walk-forward folds, leakage
 tripwires, execution-cost modeling, and reproducible run manifests.
 
+![Actual Hindsight demo CLI output](docs/assets/hindsight-demo.gif)
+
+The capture above is generated from actual `python -m hindsight.cli demo`
+output. It uses the bundled synthetic sample data and shows the intended
+leakage-audit verdict.
+
 Hindsight is an evaluation harness, not an execution-research simulator. Fill
 model: market orders fill as takers at the touch when top-of-book is available
 with linear impact slippage; the kline-close fallback is flagged
