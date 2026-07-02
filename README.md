@@ -48,6 +48,15 @@ On PowerShell, the same starter demo is:
 .\make.ps1 demo
 ```
 
+On Bash or zsh with GNU Make, use the Makefile:
+
+```bash
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install -e ".[dev]"
+make demo
+```
+
 After installation, the console entry point is also available:
 
 ```powershell
