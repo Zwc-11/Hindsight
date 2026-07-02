@@ -14,7 +14,7 @@ venv/
 build/
 dist/
 
-data/
+/data/
 reports/
 
 .env
