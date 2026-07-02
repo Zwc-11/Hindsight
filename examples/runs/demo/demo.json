@@ -3,6 +3,7 @@
     "demo_json": "demo.json",
     "demo_markdown": "demo.md",
     "hindsight_clean_csv": "hindsight-clean-leaderboard.csv",
+    "leakage_json": "leakage.json",
     "manifest": "manifest.json",
     "naive_control_csv": "naive-control-leaderboard.csv"
   },
@@ -87,8 +88,8 @@
     "config_hash": "94d5b50a02317b9bd6ae8a7d0aa0f8271c19d6925bf3f2891ebe56620391f114",
     "data_content_hash": "e795b9ae204cd8a57de4154ef6d2f6dbf6f2ed94081f929be745ad62437666ee",
     "engine_version": "0.1.0",
-    "git_sha": "946fdc256295785fd6e1e37c329b96039d47ca45",
-    "run_id": "6386e6227a7c329e9c14adda442e14272962d919378e3389a102fad47ad7f530",
+    "git_sha": "bef37732c4a5d7dd74f6f500749b3706099583d6",
+    "run_id": "fdf8719e7b13c1ffb382f95026ef97bd30d1c139e56836e2dad61bd3a9202ef5",
     "seed": 0
   },
   "naive_control": {

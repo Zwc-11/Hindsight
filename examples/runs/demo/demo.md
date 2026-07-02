@@ -19,7 +19,7 @@ The backtester that catches you lying to yourself.
 - Honest benchmark hash: `488c375daa143582f22a591cf09f2a5d165238d43f00b75335c205b02b84cacd`
 - Naive control PBO: `n/a (requires >=4 trials)`
 - Honest benchmark PBO: `n/a (requires >=4 trials)`
-- Manifest run id: `6386e6227a7c329e9c14adda442e14272962d919378e3389a102fad47ad7f530`
+- Manifest run id: `fdf8719e7b13c1ffb382f95026ef97bd30d1c139e56836e2dad61bd3a9202ef5`
 
 ## Naive Control
 
@@ -43,3 +43,4 @@ The backtester that catches you lying to yourself.
 - `manifest`: `manifest.json`
 - `naive_control_csv`: `naive-control-leaderboard.csv`
 - `hindsight_clean_csv`: `hindsight-clean-leaderboard.csv`
+- `leakage_json`: `leakage.json`

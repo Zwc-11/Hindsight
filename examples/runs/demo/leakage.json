@@ -1,0 +1,34 @@
+{
+  "audits": [
+    {
+      "policy_name": "ofi_quote",
+      "target_name": "markout_bps_10s",
+      "verdict": "pass",
+      "violations": []
+    },
+    {
+      "policy_name": "maker_side_filter",
+      "target_name": "markout_bps_10s",
+      "verdict": "pass",
+      "violations": []
+    },
+    {
+      "policy_name": "leaky",
+      "target_name": "markout_bps_10s",
+      "verdict": "fail",
+      "violations": [
+        {
+          "message": "feature set contains target-derived columns",
+          "offending_features": [
+            "markout_bps_10s"
+          ],
+          "probe": "target_leakage",
+          "severity": "hard",
+          "verdict": "fail"
+        }
+      ]
+    }
+  ],
+  "schema_version": "1.0.0",
+  "verdict": "fail"
+}

@@ -77,6 +77,7 @@ Committed demo artifacts live in [examples/runs/demo](examples/runs/demo):
 
 - [demo.md](examples/runs/demo/demo.md)
 - [demo.json](examples/runs/demo/demo.json)
+- [leakage.json](examples/runs/demo/leakage.json)
 - [manifest.json](examples/runs/demo/manifest.json)
 
 ## What Is Included
