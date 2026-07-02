@@ -13,17 +13,22 @@ if ($Task -eq "test") {
     exit $LASTEXITCODE
 }
 
-if ($Task -eq "run" -or $Task -eq "demo") {
+if ($Task -eq "run") {
     python -m hindsight.cli run
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
 
-if ($Task -eq "compare" -or $Task -eq "demo") {
+if ($Task -eq "compare") {
     python -m hindsight.cli compare
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
 
-if ($Task -eq "benchmark" -or $Task -eq "demo") {
+if ($Task -eq "benchmark") {
     python -m hindsight.cli benchmark
+    exit $LASTEXITCODE
+}
+
+if ($Task -eq "demo") {
+    python -m hindsight.cli demo
     exit $LASTEXITCODE
 }

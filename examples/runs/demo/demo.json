@@ -1,0 +1,193 @@
+{
+  "artifacts": {
+    "demo_json": "demo.json",
+    "demo_markdown": "demo.md",
+    "hindsight_clean_csv": "hindsight-clean-leaderboard.csv",
+    "manifest": "manifest.json",
+    "naive_control_csv": "naive-control-leaderboard.csv"
+  },
+  "hindsight_audit": {
+    "blocked_policy": "leaky",
+    "error": "policy leaky failed leakage probe",
+    "leaky_policy_status": "blocked"
+  },
+  "honest_benchmark": {
+    "benchmark_hash": "8878b1f5b0a5fadff26e1f8e0d7a0a8354cf73ad1d0f695bbf0dabde7e6feda2",
+    "rows": [
+      {
+        "average_markout_bps": 0.5,
+        "baseline_average_markout_bps": 1.5,
+        "fold_id": 0,
+        "markout_lift_bps": -1.0,
+        "markout_lift_ci_lower_bps": -2.96,
+        "markout_lift_ci_upper_bps": 0.96,
+        "policy_name": "maker_side_filter",
+        "quote_rate": 0.5,
+        "rows": 2
+      },
+      {
+        "average_markout_bps": 1.5,
+        "baseline_average_markout_bps": 1.5,
+        "fold_id": 0,
+        "markout_lift_bps": 0.0,
+        "markout_lift_ci_lower_bps": 0.0,
+        "markout_lift_ci_upper_bps": 0.0,
+        "policy_name": "ofi_quote",
+        "quote_rate": 1.0,
+        "rows": 2
+      },
+      {
+        "average_markout_bps": 1.5,
+        "baseline_average_markout_bps": 3.5,
+        "fold_id": 1,
+        "markout_lift_bps": -2.0,
+        "markout_lift_ci_lower_bps": -5.92,
+        "markout_lift_ci_upper_bps": 1.92,
+        "policy_name": "maker_side_filter",
+        "quote_rate": 0.5,
+        "rows": 2
+      },
+      {
+        "average_markout_bps": 3.5,
+        "baseline_average_markout_bps": 3.5,
+        "fold_id": 1,
+        "markout_lift_bps": 0.0,
+        "markout_lift_ci_lower_bps": 0.0,
+        "markout_lift_ci_upper_bps": 0.0,
+        "policy_name": "ofi_quote",
+        "quote_rate": 1.0,
+        "rows": 2
+      }
+    ],
+    "summary": [
+      {
+        "average_markout_bps": 1.0,
+        "average_markout_lift_bps": -1.5,
+        "average_quote_rate": 0.5,
+        "folds": 2,
+        "policy_name": "maker_side_filter"
+      },
+      {
+        "average_markout_bps": 2.5,
+        "average_markout_lift_bps": 0.0,
+        "average_quote_rate": 1.0,
+        "folds": 2,
+        "policy_name": "ofi_quote"
+      }
+    ]
+  },
+  "manifest": {
+    "config_hash": "94d5b50a02317b9bd6ae8a7d0aa0f8271c19d6925bf3f2891ebe56620391f114",
+    "data_content_hash": "e795b9ae204cd8a57de4154ef6d2f6dbf6f2ed94081f929be745ad62437666ee",
+    "engine_version": "0.1.0",
+    "git_sha": "1662cb1ad15501e3a63b40a489bb550102300f45",
+    "run_id": "85928876131ef417c82adeac10905ef4a7e498b9712afadc894320355a83396c",
+    "seed": 0
+  },
+  "naive_control": {
+    "benchmark_hash": "0dea10db53a3a1207f10192d800834ba52b6be488aa390fc496bb8425d128308",
+    "rows": [
+      {
+        "average_markout_bps": 0.5,
+        "baseline_average_markout_bps": -0.5,
+        "fold_id": 0,
+        "markout_lift_bps": 1.0,
+        "markout_lift_ci_lower_bps": -0.96,
+        "markout_lift_ci_upper_bps": 2.96,
+        "policy_name": "leaky",
+        "quote_rate": 0.5,
+        "rows": 2
+      },
+      {
+        "average_markout_bps": 0.5,
+        "baseline_average_markout_bps": -0.5,
+        "fold_id": 0,
+        "markout_lift_bps": 1.0,
+        "markout_lift_ci_lower_bps": -0.96,
+        "markout_lift_ci_upper_bps": 2.96,
+        "policy_name": "maker_side_filter",
+        "quote_rate": 0.5,
+        "rows": 2
+      },
+      {
+        "average_markout_bps": -0.5,
+        "baseline_average_markout_bps": -0.5,
+        "fold_id": 0,
+        "markout_lift_bps": 0.0,
+        "markout_lift_ci_lower_bps": 0.0,
+        "markout_lift_ci_upper_bps": 0.0,
+        "policy_name": "ofi_quote",
+        "quote_rate": 1.0,
+        "rows": 2
+      },
+      {
+        "average_markout_bps": 1.0,
+        "baseline_average_markout_bps": 0.5,
+        "fold_id": 1,
+        "markout_lift_bps": 0.5,
+        "markout_lift_ci_lower_bps": -0.48,
+        "markout_lift_ci_upper_bps": 1.48,
+        "policy_name": "leaky",
+        "quote_rate": 0.5,
+        "rows": 2
+      },
+      {
+        "average_markout_bps": -0.5,
+        "baseline_average_markout_bps": 0.5,
+        "fold_id": 1,
+        "markout_lift_bps": -1.0,
+        "markout_lift_ci_lower_bps": -2.96,
+        "markout_lift_ci_upper_bps": 0.96,
+        "policy_name": "maker_side_filter",
+        "quote_rate": 0.5,
+        "rows": 2
+      },
+      {
+        "average_markout_bps": 0.5,
+        "baseline_average_markout_bps": 0.5,
+        "fold_id": 1,
+        "markout_lift_bps": 0.0,
+        "markout_lift_ci_lower_bps": 0.0,
+        "markout_lift_ci_upper_bps": 0.0,
+        "policy_name": "ofi_quote",
+        "quote_rate": 1.0,
+        "rows": 2
+      }
+    ],
+    "summary": [
+      {
+        "average_markout_bps": 0.75,
+        "average_markout_lift_bps": 0.75,
+        "average_quote_rate": 0.5,
+        "folds": 2,
+        "policy_name": "leaky"
+      },
+      {
+        "average_markout_bps": 0.0,
+        "average_markout_lift_bps": 0.0,
+        "average_quote_rate": 0.5,
+        "folds": 2,
+        "policy_name": "maker_side_filter"
+      },
+      {
+        "average_markout_bps": 0.0,
+        "average_markout_lift_bps": 0.0,
+        "average_quote_rate": 1.0,
+        "folds": 2,
+        "policy_name": "ofi_quote"
+      }
+    ],
+    "warning": "deliberately unsafe control - do not use",
+    "winner_policy": "leaky"
+  },
+  "sample_data": {
+    "date": "20260101",
+    "horizon": "10s",
+    "label": "synthetic",
+    "root": "examples/sample_data/hyperliquid",
+    "rows": 8,
+    "symbol": "SOL-PERP"
+  },
+  "schema_version": "1.0.0",
+  "title": "The backtester that catches you lying to yourself"
+}

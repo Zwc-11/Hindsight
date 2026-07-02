@@ -33,3 +33,4 @@ jobs:
           python -m hindsight.cli run --output-dir /tmp/hindsight-run
           python -m hindsight.cli compare --output-dir /tmp/hindsight-compare
           python -m hindsight.cli benchmark --output-dir /tmp/hindsight-benchmark
+          python -m hindsight.cli demo --output-dir /tmp/hindsight-demo

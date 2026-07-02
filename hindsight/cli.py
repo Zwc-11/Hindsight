@@ -15,6 +15,7 @@ from hindsight.core.events import CanonicalEvent
 from hindsight.core.hashing import run_hash, stable_hash
 from hindsight.data.binance_adapter import BinanceLakeAdapter
 from hindsight.data.hyperliquid_adapter import HyperliquidLakeAdapter
+from hindsight.demo import run_demo
 from hindsight.evaluation.benchmark import (
     BenchmarkResult,
     benchmark_quote_policies,
@@ -314,6 +315,19 @@ def build_parser() -> argparse.ArgumentParser:
     benchmark_parser.add_argument("--purge-seconds", type=float, default=0.0)
     benchmark_parser.add_argument("--embargo-seconds", type=float, default=0.0)
     benchmark_parser.add_argument("--include-leaky", action="store_true")
+    demo_parser = subparsers.add_parser("demo")
+    demo_parser.add_argument(
+        "--sample-root",
+        type=Path,
+        default=Path("examples/sample_data/hyperliquid"),
+    )
+    demo_parser.add_argument("--output-dir", type=Path, default=Path("reports/hindsight-demo"))
+    demo_parser.add_argument("--symbol", default="SOL-PERP")
+    demo_parser.add_argument("--date", default="20260101")
+    demo_parser.add_argument("--limit", type=int, default=8)
+    demo_parser.add_argument("--horizon", default="10s")
+    demo_parser.add_argument("--label-horizon-seconds", type=float, default=10.0)
+    demo_parser.add_argument("--seed", type=int, default=0)
     return parser
 
 
@@ -354,6 +368,26 @@ def main(argv: Sequence[str] | None = None) -> int:
         )
         print(f"Wrote {benchmark_artifacts.csv_path}")
         print(f"Benchmark hash {benchmark_artifacts.result.run_hash}")
+        return 0
+    if args.command == "demo":
+        demo_artifacts = run_demo(
+            sample_root=args.sample_root,
+            output_dir=args.output_dir,
+            repo_root=Path.cwd(),
+            symbol=args.symbol,
+            date=args.date,
+            limit=args.limit,
+            horizon=args.horizon,
+            label_horizon_seconds=args.label_horizon_seconds,
+            seed=args.seed,
+        )
+        print("Sample data: synthetic")
+        print("Naive control: deliberately unsafe control - do not use")
+        print("Hindsight audit: blocked leaky policy")
+        print(f"Wrote {demo_artifacts.json_path}")
+        print(f"Wrote {demo_artifacts.markdown_path}")
+        print(f"Wrote {demo_artifacts.manifest_path}")
+        print(f"Demo run id {demo_artifacts.manifest.run_id}")
         return 0
     run_artifacts = run_hindsight(
         lake_root=args.lake_root,

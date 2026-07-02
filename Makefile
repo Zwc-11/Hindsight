@@ -1,4 +1,4 @@
-.PHONY: install test run compare benchmark demo
+.PHONY: install test run compare benchmark smoke demo
 
 install:
 	python -m pip install -e ".[dev]"
@@ -15,4 +15,7 @@ compare:
 benchmark:
 	python -m hindsight.cli benchmark
 
-demo: run compare benchmark
+smoke: run compare benchmark
+
+demo:
+	python -m hindsight.cli demo

@@ -1,6 +1,9 @@
 # Hindsight
 
-Leakage-audited, point-in-time evaluation for market microstructure strategies.
+The backtester that catches you lying to yourself.
+
+Leakage-audited, point-in-time, reproducible evaluation for Hyperliquid
+microstructure strategies.
 
 Hindsight is a Python backtesting and evaluation harness extracted from
 MarketImmune. It focuses on correctness of research evaluation: deterministic
@@ -18,6 +21,7 @@ funding uses the configured flat rate.
 ```powershell
 python -m pip install -e ".[dev]"
 python -m pytest
+python -m hindsight.cli demo
 python -m hindsight.cli run
 python -m hindsight.cli compare
 python -m hindsight.cli benchmark
@@ -40,6 +44,17 @@ hindsight benchmark
 
 The default commands use tiny synthetic sample lakes under
 `examples/sample_data/` and write generated reports under `reports/`.
+
+The flagship demo writes a JSON report, Markdown report, manifest, and two
+leaderboards. It first runs a deliberately unsafe random-split control where the
+leaky policy wins, then runs Hindsight's audit path and blocks that same leaky
+policy.
+
+Committed demo artifacts live in [examples/runs/demo](examples/runs/demo):
+
+- [demo.md](examples/runs/demo/demo.md)
+- [demo.json](examples/runs/demo/demo.json)
+- [manifest.json](examples/runs/demo/manifest.json)
 
 ## What Is Included
 
@@ -66,3 +81,9 @@ python -m pytest tests/hindsight -q
 The bundled sample data is synthetic and exists only to make smoke tests and
 demo commands reproducible. Use your own Hyperliquid lake for real benchmark
 claims.
+
+## Docs
+
+- [Data](docs/data.md)
+- [Limitations](docs/limitations.md)
+- [Related Work](docs/related_work.md)
