@@ -21,5 +21,6 @@ class ExecConfig(BaseModel):
     participation_cap: float = Field(gt=0, le=1)
     seed: int
 
-    # TODO(verify): confirm Hyperliquid maker/taker fee tiers before using this
-    # config for headline markout or PnL claims.
+    # The default CLI smoke config uses Hyperliquid's published base perps tier
+    # as of 2026-07-02: 1.5 bps maker, 4.5 bps taker. Keep fees configurable
+    # for account-specific tiers, staking discounts, quote assets, and rebates.

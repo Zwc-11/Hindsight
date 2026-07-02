@@ -17,8 +17,10 @@ with linear impact slippage; the kline-close fallback is flagged
 a trade prints through it, capped at `participation_cap * print_size`. There is
 no queue-position model. Orders activate after `latency_ms`. Funding accrues
 every `funding_interval_hours` at a flat configured rate, not a historical
-funding series. Fee bps are configurable; Hyperliquid tier values are unverified
-in `hindsight.execution.config`. No live trading. Bundled data labels live in
+funding series. Fee bps are configurable; the default smoke config uses
+Hyperliquid's published base perps tier of 1.5 bps maker and 4.5 bps taker, but
+real accounts can have tier discounts or maker rebates. No live trading. Bundled
+data labels live in
 [examples/sample_data/data_manifest.json](examples/sample_data/data_manifest.json).
 
 ## Quick Start

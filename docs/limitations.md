@@ -16,3 +16,10 @@ Execution assumptions are intentionally simple and disclosed: market orders fill
 as takers at the touch when top-of-book is available, limit orders fill as makers
 when a print crosses the limit, fills are participation-capped, and configured
 fees, slippage, latency, and funding are applied deterministically.
+
+The default demo/run fee values match Hyperliquid's published base perps tier as
+of July 2, 2026: 1.5 bps maker and 4.5 bps taker
+([official fees doc](https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees)).
+Fees remain explicit config inputs because account volume tiers, staking
+discounts, aligned quote assets, and maker rebates can change the effective fee
+paid by a real strategy.
