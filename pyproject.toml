@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hindsight"
+version = "0.1.0"
+description = "Leakage-audited, point-in-time evaluation harness for market microstructure strategies."
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [{ name = "Hindsight contributors" }]
+dependencies = [
+    "pydantic>=2.7",
+    "pyarrow>=15",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "ruff>=0.5",
+]
+plot = [
+    "matplotlib>=3.8",
+]
+
+[project.scripts]
+hindsight = "hindsight.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["hindsight*"]
+exclude = ["tests*", "examples*", "reports*", "data*"]
+namespaces = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests/hindsight"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

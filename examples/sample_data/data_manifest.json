@@ -1,0 +1,18 @@
+{
+  "datasets": [
+    {
+      "name": "binance_usdm",
+      "label": "synthetic",
+      "purpose": "offline smoke data for hindsight run and hindsight compare",
+      "symbol": "BTCUSDT",
+      "date": "2026-01-01"
+    },
+    {
+      "name": "hyperliquid",
+      "label": "synthetic",
+      "purpose": "offline markout rows for hindsight benchmark",
+      "symbol": "SOL-PERP",
+      "date": "20260101"
+    }
+  ]
+}
