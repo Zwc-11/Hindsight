@@ -14,6 +14,7 @@ from hindsight.evaluation.metrics import (
     probability_of_backtest_overfit,
     realized_markouts_bps,
     reconcile_markouts,
+    sharpe_ratio,
     total_fees,
     turnover_notional,
 )
@@ -56,6 +57,19 @@ def test_equity_return_drawdown_and_cost_metrics() -> None:
     assert total_fees(fills) == pytest.approx(1.0)
 
 
+def test_equity_and_sharpe_metrics_reject_invalid_inputs() -> None:
+    with pytest.raises(ValueError, match="at least two"):
+        equity_returns([equity_point(0, 100)])
+    with pytest.raises(ValueError, match="zero equity"):
+        equity_returns([equity_point(0, 0), equity_point(1, 1)])
+    with pytest.raises(ValueError, match="at least two"):
+        sharpe_ratio([0.1])
+    with pytest.raises(ValueError, match="zero-variance"):
+        sharpe_ratio([0.1, 0.1])
+    with pytest.raises(ValueError, match="at least one"):
+        max_drawdown([])
+
+
 def test_realized_markouts_use_first_mid_after_horizon() -> None:
     fills = [fill("buy", 0, Side.BUY, 100), fill("sell", 0, Side.SELL, 100)]
     mids = [
@@ -87,6 +101,13 @@ def test_markout_lift_returns_confidence_interval() -> None:
 
     assert lift.value == pytest.approx(3)
     assert lift.lower < lift.value < lift.upper
+
+
+def test_markout_lift_rejects_unpaired_or_empty_inputs() -> None:
+    with pytest.raises(ValueError, match="paired"):
+        markout_lift([1.0], [1.0, 2.0])
+    with pytest.raises(ValueError, match="at least one"):
+        markout_lift([], [])
 
 
 def test_deflated_sharpe_probability_is_bounded() -> None:
