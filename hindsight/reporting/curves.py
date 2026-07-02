@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+from importlib import import_module
 from pathlib import Path
+from typing import Any, cast
 
 from hindsight.core.types import EquityPoint
 
@@ -36,7 +38,7 @@ def write_curve_png(path: Path, curve: tuple[EquityPoint, ...]) -> bool:
     # Fallback reason: M1 explicitly says PNG output is optional and matplotlib
     # must not become a hard dependency. JSON/Markdown still carry the curve.
     try:
-        from matplotlib import pyplot as plt
+        plt = cast(Any, import_module("matplotlib.pyplot"))
     except ImportError:
         return False
     path.parent.mkdir(parents=True, exist_ok=True)

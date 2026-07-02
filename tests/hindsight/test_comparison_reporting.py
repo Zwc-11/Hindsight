@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import builtins
 import types
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
@@ -92,14 +91,12 @@ def test_ascii_sparkline_and_png_optional_fallback(
     with pytest.raises(ValueError, match="sparkline"):
         ascii_sparkline([])
 
-    real_import = builtins.__import__
-
-    def blocked_import(name: str, *args: object, **kwargs: object) -> object:
-        if name == "matplotlib":
+    def blocked_import_module(name: str) -> object:
+        if name == "matplotlib.pyplot":
             raise ImportError("blocked")
-        return real_import(name, *args, **kwargs)
+        raise AssertionError(f"unexpected optional import: {name}")
 
-    monkeypatch.setattr(builtins, "__import__", blocked_import)
+    monkeypatch.setattr("hindsight.reporting.curves.import_module", blocked_import_module)
     result = compare_naive_vs_realistic(
         events=events(),
         strategy_factory=lambda: MomentumStrategy("BTCUSDT", 1, 1, 1),
@@ -122,14 +119,12 @@ def test_write_curve_png_success_with_fake_matplotlib(
         savefig=lambda path: calls.append(str(path)),
         close=lambda: calls.append("close"),
     )
-    real_import = builtins.__import__
+    def fake_import_module(name: str) -> object:
+        if name == "matplotlib.pyplot":
+            return fake_pyplot
+        raise AssertionError(f"unexpected optional import: {name}")
 
-    def fake_import(name: str, *args: object, **kwargs: object) -> object:
-        if name == "matplotlib":
-            return types.SimpleNamespace(pyplot=fake_pyplot)
-        return real_import(name, *args, **kwargs)
-
-    monkeypatch.setattr(builtins, "__import__", fake_import)
+    monkeypatch.setattr("hindsight.reporting.curves.import_module", fake_import_module)
     result = compare_naive_vs_realistic(
         events=events(),
         strategy_factory=lambda: MomentumStrategy("BTCUSDT", 1, 1, 1),
@@ -139,4 +134,3 @@ def test_write_curve_png_success_with_fake_matplotlib(
     )
     assert write_curve_png(tmp_path / "curve.png", result.realistic.equity_curve) is True
     assert "plot" in calls
-
