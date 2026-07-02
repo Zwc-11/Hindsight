@@ -57,3 +57,19 @@ jobs:
           assert first["run_id"] == second["run_id"]
           assert first["data_content_hash"] == second["data_content_hash"]
           PY
+
+  catboost-extra:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install CatBoost extra
+        run: python -m pip install -e ".[dev,catboost]"
+
+      - name: CatBoost adapter tests
+        run: python -m pytest tests/hindsight/test_catboost_adapter.py -q

@@ -24,6 +24,9 @@ dev = [
 plot = [
     "matplotlib>=3.8",
 ]
+catboost = [
+    "catboost>=1.2",
+]
 
 [project.scripts]
 hindsight = "hindsight.cli:main"

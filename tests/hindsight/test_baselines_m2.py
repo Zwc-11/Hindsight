@@ -5,7 +5,7 @@ from typing import cast
 
 import pytest
 
-from hindsight.core.events import BookTickerEvent, KlineEvent, Side
+from hindsight.core.events import BookTickerEvent, KlineEvent, Side, TradeEvent
 from hindsight.core.types import Fill
 from hindsight.pit.view import PointInTimeView
 from hindsight.strategy.baselines.leaky import LEAKY_FEATURE_NAMES, LeakyFutureReturnStrategy
@@ -158,6 +158,16 @@ def test_momentum_lifecycle_noops() -> None:
     assert strategy.on_finish() is None
 
 
+def test_momentum_uses_trade_event_prices() -> None:
+    strategy = MomentumStrategy("BTC-PERP", 1, 1, 0)
+
+    assert strategy.on_event(trade(price=100), cast(PointInTimeView, object())) == ()
+    orders = strategy.on_event(trade(price=101), cast(PointInTimeView, object()))
+
+    assert len(orders) == 1
+    assert orders[0].side == Side.BUY
+
+
 def kline(*, close: float) -> KlineEvent:
     return KlineEvent(
         symbol="BTC-PERP",
@@ -172,6 +182,18 @@ def kline(*, close: float) -> KlineEvent:
         close_price=close,
         volume=1,
         trade_count=1,
+    )
+
+
+def trade(*, price: float) -> TradeEvent:
+    return TradeEvent(
+        symbol="BTC-PERP",
+        timestamp=NOW,
+        sequence=0,
+        trade_id=1,
+        price=price,
+        quantity=1,
+        side=Side.BUY,
     )
 
 

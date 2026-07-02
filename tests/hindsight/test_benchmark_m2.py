@@ -11,6 +11,8 @@ from hindsight.core.events import Side
 from hindsight.data.hyperliquid_adapter import HyperliquidMarkoutRecord
 from hindsight.data.lake import HyperliquidLakeLayout, write_parquet_records
 from hindsight.evaluation.benchmark import (
+    BenchmarkResult,
+    BenchmarkRow,
     benchmark_quote_policies,
     label_intervals,
     leaky_markout_policy,
@@ -93,6 +95,34 @@ def test_benchmark_leaderboard_is_reproducible(tmp_path: Path) -> None:
     assert "deflated_sharpe_probability" in text
     assert "run_pbo" in text
     assert result.pbo == "n/a (requires >=4 trials)"
+
+
+def test_leaderboard_formats_numeric_diagnostics(tmp_path: Path) -> None:
+    result = BenchmarkResult(
+        rows=(
+            BenchmarkRow(
+                fold_id=0,
+                policy_name="catboost",
+                rows=2,
+                quote_rate=0.5,
+                average_markout_bps=1.0,
+                baseline_average_markout_bps=0.25,
+                markout_lift_bps=0.75,
+                markout_lift_ci_lower_bps=0.1,
+                markout_lift_ci_upper_bps=1.4,
+                deflated_sharpe_probability=0.1234567890123,
+            ),
+        ),
+        pbo=0.25,
+        run_hash="hash",
+    )
+    path = tmp_path / "leaderboard.csv"
+
+    write_leaderboard_csv(path, result)
+
+    text = path.read_text(encoding="utf-8")
+    assert "0.123456789012" in text
+    assert ",0.25\n" in text
 
 
 def test_leaky_policy_fails_benchmark_run() -> None:

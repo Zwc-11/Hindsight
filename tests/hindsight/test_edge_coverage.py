@@ -47,6 +47,7 @@ def test_markout_helpers_validate_inputs_and_missing_future_mid() -> None:
     assert is_toxic(-2, fee_bps=1)
     assert future_mid_at(0, 10, [1, 5], [100, 101]) is None
     assert realized_markout_bps(MakerFill(0, 100, 1), [11], [101], 10) == pytest.approx(100)
+    assert realized_markout_bps(MakerFill(0, 100, 1), [1], [100], 10) is None
 
     with pytest.raises(ValueError, match="fill_price"):
         markout_bps(0, 101, 1)
