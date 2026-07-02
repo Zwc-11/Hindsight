@@ -28,6 +28,10 @@ from hindsight.execution.config import ExecConfig
 from hindsight.pit.view import PointInTimeView
 from hindsight.reporting.json_report import HindsightReport, write_json_report
 from hindsight.reporting.leaderboard import write_leaderboard_csv
+from hindsight.reporting.leakage_report import (
+    quote_policy_leakage_payload,
+    write_leakage_json,
+)
 from hindsight.reporting.manifest import RunManifest, current_git_sha
 from hindsight.reporting.markdown_report import write_markdown_report
 from hindsight.strategy.base import NoopStrategy, Strategy
@@ -48,6 +52,7 @@ class BenchmarkArtifacts:
     """Paths and result returned by a benchmark run."""
 
     csv_path: Path
+    leakage_path: Path
     result: BenchmarkResult
 
 
@@ -198,18 +203,24 @@ def run_benchmark(
     ]
     if include_leaky:
         policies.append(leaky_markout_policy(records, horizon_key=horizon))
+    target_name = f"markout_bps_{horizon}"
+    leakage_path = output_dir / "leakage.json"
+    write_leakage_json(
+        leakage_path,
+        quote_policy_leakage_payload(policies=tuple(policies), target_name=target_name),
+    )
     result = benchmark_quote_policies(
         records=records,
         folds=folds,
         policies=tuple(policies),
         baseline_policy_name="ofi_quote",
         horizon_key=horizon,
-        target_name=f"markout_bps_{horizon}",
+        target_name=target_name,
         fail_on_leakage=True,
     )
     csv_path = output_dir / "hindsight-leaderboard.csv"
     write_leaderboard_csv(csv_path, result)
-    return BenchmarkArtifacts(csv_path=csv_path, result=result)
+    return BenchmarkArtifacts(csv_path=csv_path, leakage_path=leakage_path, result=result)
 
 
 def build_parser() -> argparse.ArgumentParser:

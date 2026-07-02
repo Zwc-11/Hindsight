@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
@@ -157,6 +158,9 @@ def test_benchmark_cli_writes_leaderboard(tmp_path: Path) -> None:
 
     assert exit_code == 0
     assert (output / "hindsight-leaderboard.csv").exists()
+    leakage = json.loads((output / "leakage.json").read_text(encoding="utf-8"))
+    assert leakage["verdict"] == "pass"
+    assert all(audit["verdict"] == "pass" for audit in leakage["audits"])
     with pytest.raises(LeakageError):
         run_benchmark(
             lake_root=tmp_path / "lake",
@@ -173,3 +177,11 @@ def test_benchmark_cli_writes_leaderboard(tmp_path: Path) -> None:
             embargo_seconds=0,
             include_leaky=True,
         )
+    leakage = json.loads((output / "leakage.json").read_text(encoding="utf-8"))
+    assert leakage["verdict"] == "fail"
+    leaky_audit = next(audit for audit in leakage["audits"] if audit["policy_name"] == "leaky")
+    clean_audit = next(audit for audit in leakage["audits"] if audit["policy_name"] == "ofi_quote")
+    assert leaky_audit["violations"][0]["probe"] == "target_leakage"
+    assert leaky_audit["violations"][0]["severity"] == "hard"
+    assert leaky_audit["violations"][0]["offending_features"] == ["markout_bps_10s"]
+    assert clean_audit["violations"] == []

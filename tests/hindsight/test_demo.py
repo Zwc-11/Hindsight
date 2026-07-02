@@ -49,6 +49,16 @@ def test_run_demo_writes_artifacts_and_blocks_leaky_policy(tmp_path: Path) -> No
     assert payload["honest_benchmark"]["summary"][0]["deflated_sharpe_probability"] == (
         "n/a (requires >=3 trials)"
     )
+    leakage = json.loads(artifacts.leakage_path.read_text(encoding="utf-8"))
+    assert leakage["verdict"] == "fail"
+    leaky_audit = next(audit for audit in leakage["audits"] if audit["policy_name"] == "leaky")
+    clean_audit = next(
+        audit for audit in leakage["audits"] if audit["policy_name"] == "ofi_quote"
+    )
+    assert leaky_audit["violations"][0]["probe"] == "target_leakage"
+    assert leaky_audit["violations"][0]["severity"] == "hard"
+    assert leaky_audit["violations"][0]["offending_features"] == ["markout_bps_10s"]
+    assert clean_audit["violations"] == []
     assert artifacts.markdown_path.read_text(encoding="utf-8").startswith("# Hindsight Demo")
     assert artifacts.naive_csv_path.exists()
     assert artifacts.honest_csv_path.exists()
@@ -60,3 +70,4 @@ def test_demo_cli_writes_outputs(tmp_path: Path) -> None:
     assert (tmp_path / "demo.json").exists()
     assert (tmp_path / "demo.md").exists()
     assert (tmp_path / "manifest.json").exists()
+    assert (tmp_path / "leakage.json").exists()

@@ -26,6 +26,10 @@ from hindsight.evaluation.benchmark import (
 from hindsight.evaluation.leakage import LeakageError
 from hindsight.evaluation.walk_forward import purged_walk_forward_folds
 from hindsight.reporting.leaderboard import write_leaderboard_csv
+from hindsight.reporting.leakage_report import (
+    quote_policy_leakage_payload,
+    write_leakage_json,
+)
 from hindsight.reporting.manifest import RunManifest, current_git_sha
 
 DEMO_WARNING = "deliberately unsafe control - do not use"
@@ -40,6 +44,7 @@ class DemoArtifacts:
     manifest_path: Path
     naive_csv_path: Path
     honest_csv_path: Path
+    leakage_path: Path
     manifest: RunManifest
 
 
@@ -135,12 +140,20 @@ def run_demo(
     output_dir.mkdir(parents=True, exist_ok=True)
     naive_csv_path = output_dir / "naive-control-leaderboard.csv"
     honest_csv_path = output_dir / "hindsight-clean-leaderboard.csv"
+    leakage_path = output_dir / "leakage.json"
     json_path = output_dir / "demo.json"
     markdown_path = output_dir / "demo.md"
     manifest_path = output_dir / "manifest.json"
 
     write_leaderboard_csv(naive_csv_path, naive_result)
     write_leaderboard_csv(honest_csv_path, honest_result)
+    write_leakage_json(
+        leakage_path,
+        quote_policy_leakage_payload(
+            policies=(baseline, clean_policy, leaky_policy),
+            target_name=target_name,
+        ),
+    )
 
     payload = _demo_payload(
         sample_root=sample_root,
@@ -155,6 +168,7 @@ def run_demo(
         manifest=manifest,
         naive_csv_path=naive_csv_path,
         honest_csv_path=honest_csv_path,
+        leakage_path=leakage_path,
     )
     json_path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     markdown_path.write_text(_demo_markdown(payload), encoding="utf-8")
@@ -166,6 +180,7 @@ def run_demo(
         manifest_path=manifest_path,
         naive_csv_path=naive_csv_path,
         honest_csv_path=honest_csv_path,
+        leakage_path=leakage_path,
         manifest=manifest,
     )
 
@@ -208,6 +223,7 @@ def _demo_payload(
     manifest: RunManifest,
     naive_csv_path: Path,
     honest_csv_path: Path,
+    leakage_path: Path,
 ) -> dict[str, Any]:
     naive_summary = _policy_summary(naive_result)
     honest_summary = _policy_summary(honest_result)
@@ -252,6 +268,7 @@ def _demo_payload(
             "manifest": _artifact_name(output_dir, output_dir / "manifest.json"),
             "naive_control_csv": _artifact_name(output_dir, naive_csv_path),
             "hindsight_clean_csv": _artifact_name(output_dir, honest_csv_path),
+            "leakage_json": _artifact_name(output_dir, leakage_path),
         },
     }
 
