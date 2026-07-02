@@ -44,6 +44,11 @@ def test_run_demo_writes_artifacts_and_blocks_leaky_policy(tmp_path: Path) -> No
     assert payload["naive_control"]["winner_policy"] == "leaky"
     assert payload["hindsight_audit"]["leaky_policy_status"] == "blocked"
     assert payload["hindsight_audit"]["blocked_policy"] == "leaky"
+    assert payload["naive_control"]["pbo"] == "n/a (requires >=4 trials)"
+    assert payload["honest_benchmark"]["pbo"] == "n/a (requires >=4 trials)"
+    assert payload["honest_benchmark"]["summary"][0]["deflated_sharpe_probability"] == (
+        "n/a (requires >=3 trials)"
+    )
     assert artifacts.markdown_path.read_text(encoding="utf-8").startswith("# Hindsight Demo")
     assert artifacts.naive_csv_path.exists()
     assert artifacts.honest_csv_path.exists()

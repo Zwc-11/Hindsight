@@ -17,6 +17,8 @@ LEADERBOARD_COLUMNS = (
     "markout_lift_bps",
     "markout_lift_ci_lower_bps",
     "markout_lift_ci_upper_bps",
+    "deflated_sharpe_probability",
+    "run_pbo",
 )
 
 
@@ -36,4 +38,14 @@ def write_leaderboard_csv(path: Path, result: BenchmarkResult) -> None:
                 "markout_lift_bps": f"{row.markout_lift_bps:.12g}",
                 "markout_lift_ci_lower_bps": f"{row.markout_lift_ci_lower_bps:.12g}",
                 "markout_lift_ci_upper_bps": f"{row.markout_lift_ci_upper_bps:.12g}",
+                "deflated_sharpe_probability": _format_metric(
+                    row.deflated_sharpe_probability
+                ),
+                "run_pbo": _format_metric(result.pbo),
             })
+
+
+def _format_metric(value: float | str) -> str:
+    if isinstance(value, str):
+        return value
+    return f"{value:.12g}"

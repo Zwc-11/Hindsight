@@ -87,7 +87,11 @@ def test_benchmark_leaderboard_is_reproducible(tmp_path: Path) -> None:
         target_name="markout_bps_10s",
         fail_on_leakage=True,
     ).run_hash
-    assert "markout_lift_bps" in first.read_text(encoding="utf-8")
+    text = first.read_text(encoding="utf-8")
+    assert "markout_lift_bps" in text
+    assert "deflated_sharpe_probability" in text
+    assert "run_pbo" in text
+    assert result.pbo == "n/a (requires >=4 trials)"
 
 
 def test_leaky_policy_fails_benchmark_run() -> None:

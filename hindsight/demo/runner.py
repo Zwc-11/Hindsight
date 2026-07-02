@@ -229,6 +229,7 @@ def _demo_payload(
         "naive_control": {
             "warning": DEMO_WARNING,
             "benchmark_hash": naive_result.run_hash,
+            "pbo": naive_result.pbo,
             "winner_policy": naive_winner["policy_name"],
             "summary": naive_summary,
             "rows": [_row_payload(row) for row in naive_result.rows],
@@ -240,6 +241,7 @@ def _demo_payload(
         },
         "honest_benchmark": {
             "benchmark_hash": honest_result.run_hash,
+            "pbo": honest_result.pbo,
             "summary": honest_summary,
             "rows": [_row_payload(row) for row in honest_result.rows],
         },
@@ -267,6 +269,7 @@ def _policy_summary(result: BenchmarkResult) -> list[dict[str, Any]]:
                 "average_markout_bps": _mean(row.average_markout_bps for row in rows),
                 "average_markout_lift_bps": _mean(row.markout_lift_bps for row in rows),
                 "average_quote_rate": _mean(row.quote_rate for row in rows),
+                "deflated_sharpe_probability": rows[0].deflated_sharpe_probability,
             }
         )
     return summary
@@ -283,6 +286,7 @@ def _row_payload(row: BenchmarkRow) -> dict[str, Any]:
         "markout_lift_bps": row.markout_lift_bps,
         "markout_lift_ci_lower_bps": row.markout_lift_ci_lower_bps,
         "markout_lift_ci_upper_bps": row.markout_lift_ci_upper_bps,
+        "deflated_sharpe_probability": row.deflated_sharpe_probability,
     }
 
 
@@ -324,6 +328,8 @@ def _demo_markdown(payload: dict[str, Any]) -> str:
         f"- Hindsight audit: `{audit['leaky_policy_status']}` `{audit['blocked_policy']}`",
         f"- Audit error: `{audit['error']}`",
         f"- Honest benchmark hash: `{honest['benchmark_hash']}`",
+        f"- Naive control PBO: `{naive['pbo']}`",
+        f"- Honest benchmark PBO: `{honest['pbo']}`",
         f"- Manifest run id: `{payload['manifest']['run_id']}`",
         "",
         "## Naive Control",
@@ -344,13 +350,14 @@ def _demo_markdown(payload: dict[str, Any]) -> str:
 
 def _summary_table(rows: list[dict[str, Any]]) -> list[str]:
     lines = [
-        "| Policy | Avg markout bps | Avg lift bps | Quote rate |",
-        "| --- | ---: | ---: | ---: |",
+        "| Policy | Avg markout bps | Avg lift bps | Quote rate | Deflated Sharpe probability |",
+        "| --- | ---: | ---: | ---: | --- |",
     ]
     for row in rows:
         lines.append(
             "| {policy_name} | {average_markout_bps:.6g} | "
-            "{average_markout_lift_bps:.6g} | {average_quote_rate:.6g} |".format(**row)
+            "{average_markout_lift_bps:.6g} | {average_quote_rate:.6g} | "
+            "{deflated_sharpe_probability} |".format(**row)
         )
     return lines
 

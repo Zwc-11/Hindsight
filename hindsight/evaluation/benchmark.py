@@ -2,13 +2,17 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import timedelta
 
 from hindsight.core.hashing import run_hash
 from hindsight.data.hyperliquid_adapter import HyperliquidMarkoutRecord
 from hindsight.evaluation.leakage import LeakageError, probe_target_leakage
-from hindsight.evaluation.metrics import markout_lift
+from hindsight.evaluation.metrics import (
+    deflated_sharpe_probability,
+    markout_lift,
+    probability_of_backtest_overfit,
+)
 from hindsight.evaluation.walk_forward import LabelInterval, WalkForwardFold
 
 
@@ -38,6 +42,7 @@ class BenchmarkRow:
     markout_lift_bps: float
     markout_lift_ci_lower_bps: float
     markout_lift_ci_upper_bps: float
+    deflated_sharpe_probability: float | str
 
 
 @dataclass(frozen=True, slots=True)
@@ -45,6 +50,7 @@ class BenchmarkResult:
     """Deterministic benchmark result and content hash."""
 
     rows: tuple[BenchmarkRow, ...]
+    pbo: float | str
     run_hash: str
 
 
@@ -122,10 +128,21 @@ def benchmark_quote_policies(
                     markout_lift_bps=lift.value,
                     markout_lift_ci_lower_bps=lift.lower,
                     markout_lift_ci_upper_bps=lift.upper,
+                    deflated_sharpe_probability="pending",
                 )
             )
     ordered_rows = tuple(sorted(rows, key=lambda row: (row.fold_id, row.policy_name)))
-    return BenchmarkResult(rows=ordered_rows, run_hash=_benchmark_hash(ordered_rows))
+    pbo = _pbo_value(ordered_rows)
+    dsr_by_policy = _policy_dsr_values(ordered_rows, policy_count=len(policies))
+    rows_with_dsr = tuple(
+        replace(row, deflated_sharpe_probability=dsr_by_policy[row.policy_name])
+        for row in ordered_rows
+    )
+    return BenchmarkResult(
+        rows=rows_with_dsr,
+        pbo=pbo,
+        run_hash=_benchmark_hash(rows_with_dsr, pbo),
+    )
 
 
 def quote_all_policy(record_count: int, *, name: str = "ofi_quote") -> QuotePolicy:
@@ -181,7 +198,52 @@ def _policy_values(
     return values
 
 
-def _benchmark_hash(rows: tuple[BenchmarkRow, ...]) -> str:
+def _policy_dsr_values(
+    rows: tuple[BenchmarkRow, ...],
+    *,
+    policy_count: int,
+) -> dict[str, float | str]:
+    scores_by_policy: dict[str, list[float]] = {}
+    for row in rows:
+        scores_by_policy.setdefault(row.policy_name, []).append(row.markout_lift_bps)
+    return {
+        policy_name: _deflated_sharpe_value(scores, trials=policy_count)
+        for policy_name, scores in sorted(scores_by_policy.items())
+    }
+
+
+def _deflated_sharpe_value(scores: list[float], *, trials: int) -> float | str:
+    if len(scores) < 3:
+        return "n/a (requires >=3 trials)"
+    try:
+        return deflated_sharpe_probability(scores, trials=trials)
+    except ValueError as exc:
+        message = str(exc)
+        if "zero-variance" in message:
+            return "n/a (requires nonzero variance)"
+        if "variance term" in message:
+            return "n/a (requires positive variance term)"
+        raise
+
+
+def _pbo_value(rows: tuple[BenchmarkRow, ...]) -> float | str:
+    scores_by_policy: dict[str, list[float]] = {}
+    for row in rows:
+        scores_by_policy.setdefault(row.policy_name, []).append(row.markout_lift_bps)
+    if len(scores_by_policy) < 2:
+        return "n/a (requires >=2 trials)"
+    fold_counts = {len(scores) for scores in scores_by_policy.values()}
+    if len(fold_counts) != 1:
+        raise ValueError("all policies must have the same number of fold scores")
+    fold_count = fold_counts.pop()
+    if fold_count < 4:
+        return "n/a (requires >=4 trials)"
+    if fold_count % 2 != 0:
+        return "n/a (requires even trial count)"
+    return probability_of_backtest_overfit(scores_by_policy)
+
+
+def _benchmark_hash(rows: tuple[BenchmarkRow, ...], pbo: float | str) -> str:
     return run_hash([
         {
             "fold_id": row.fold_id,
@@ -193,6 +255,8 @@ def _benchmark_hash(rows: tuple[BenchmarkRow, ...]) -> str:
             "markout_lift_bps": row.markout_lift_bps,
             "markout_lift_ci_lower_bps": row.markout_lift_ci_lower_bps,
             "markout_lift_ci_upper_bps": row.markout_lift_ci_upper_bps,
+            "deflated_sharpe_probability": row.deflated_sharpe_probability,
+            "run_pbo": pbo,
         }
         for row in rows
     ])
