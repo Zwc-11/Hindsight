@@ -5,7 +5,7 @@ from __future__ import annotations
 from collections.abc import Sequence
 from dataclasses import dataclass, field
 
-from hindsight.core.events import CanonicalEvent, KlineEvent, Side
+from hindsight.core.events import CanonicalEvent, HyperliquidFillEvent, KlineEvent, Side, TradeEvent
 from hindsight.core.types import Fill, OrderIntent, OrderType, TimeInForce
 from hindsight.pit.view import PointInTimeView
 
@@ -37,13 +37,14 @@ class MomentumStrategy:
         self._order_index = 0
 
     def on_event(self, event: CanonicalEvent, view: PointInTimeView) -> Sequence[OrderIntent]:
-        if not isinstance(event, KlineEvent):
+        price = _event_price(event)
+        if price is None:
             return ()
-        self._closes.append(event.close_price)
+        self._closes.append(price)
         if len(self._closes) <= self.lookback_bars:
             return ()
         reference = self._closes[-self.lookback_bars - 1]
-        move_bps = (event.close_price - reference) / reference * 10_000
+        move_bps = (price - reference) / reference * 10_000
         if abs(move_bps) < self.threshold_bps:
             return ()
         side = Side.BUY if move_bps > 0 else Side.SELL
@@ -67,3 +68,11 @@ class MomentumStrategy:
 
     def on_finish(self) -> None:
         return None
+
+
+def _event_price(event: CanonicalEvent) -> float | None:
+    if isinstance(event, KlineEvent):
+        return event.close_price
+    if isinstance(event, (HyperliquidFillEvent, TradeEvent)):
+        return event.price
+    return None

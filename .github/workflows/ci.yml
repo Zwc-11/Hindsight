@@ -18,8 +18,17 @@ jobs:
       - name: Install
         run: python -m pip install -e ".[dev]"
 
+      - name: Lint
+        run: python -m ruff check .
+
+      - name: Typecheck
+        run: python -m mypy
+
       - name: Test
-        run: python -m pytest tests/hindsight -q
+        run: python -m coverage run -m pytest tests/hindsight -q
+
+      - name: Coverage
+        run: python -m coverage report
 
       - name: Verify standalone imports
         run: |
@@ -31,6 +40,19 @@ jobs:
       - name: Smoke commands
         run: |
           python -m hindsight.cli run --output-dir /tmp/hindsight-run
-          python -m hindsight.cli compare --output-dir /tmp/hindsight-compare
           python -m hindsight.cli benchmark --output-dir /tmp/hindsight-benchmark
           python -m hindsight.cli demo --output-dir /tmp/hindsight-demo
+
+      - name: Demo determinism
+        run: |
+          python -m hindsight.cli demo --output-dir /tmp/hindsight-demo-a
+          python -m hindsight.cli demo --output-dir /tmp/hindsight-demo-b
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          first = json.loads(Path("/tmp/hindsight-demo-a/manifest.json").read_text())
+          second = json.loads(Path("/tmp/hindsight-demo-b/manifest.json").read_text())
+          assert first["run_id"] == second["run_id"]
+          assert first["data_content_hash"] == second["data_content_hash"]
+          PY

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 from collections import defaultdict
+from collections.abc import Iterable
 from dataclasses import dataclass
 from datetime import timedelta
 from pathlib import Path
@@ -56,7 +57,12 @@ def run_demo(
 ) -> DemoArtifacts:
     """Run the offline leakage demo and write reproducible artifacts."""
     adapter = HyperliquidLakeAdapter(sample_root)
-    records = adapter.load_markouts(symbol=symbol, date=date, limit=limit)
+    try:
+        records = adapter.load_markouts(symbol=symbol, date=date, limit=limit)
+    except FileNotFoundError as exc:
+        raise FileNotFoundError(
+            f"No Hyperliquid markout rows loaded for {symbol.upper()}"
+        ) from exc
     if not records:
         raise FileNotFoundError(f"No Hyperliquid markout rows loaded for {symbol.upper()}")
 
@@ -349,7 +355,7 @@ def _summary_table(rows: list[dict[str, Any]]) -> list[str]:
     return lines
 
 
-def _mean(values: Any) -> float:
+def _mean(values: Iterable[float]) -> float:
     items = list(values)
     if not items:
         raise ValueError("cannot average an empty sequence")

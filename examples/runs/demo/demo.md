@@ -17,7 +17,7 @@ The backtester that catches you lying to yourself.
 - Hindsight audit: `blocked` `leaky`
 - Audit error: `policy leaky failed leakage probe`
 - Honest benchmark hash: `8878b1f5b0a5fadff26e1f8e0d7a0a8354cf73ad1d0f695bbf0dabde7e6feda2`
-- Manifest run id: `85928876131ef417c82adeac10905ef4a7e498b9712afadc894320355a83396c`
+- Manifest run id: `1c8e302d5225a94aaf1d2ae99a836e3cf5f488bedc915b9f57d94cd4cfdcbcb7`
 
 ## Naive Control
 

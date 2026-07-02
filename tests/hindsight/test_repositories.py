@@ -7,7 +7,12 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
 
-from hindsight.data.repositories import AggTradeRepository, BookTickerRepository
+from hindsight.data.repositories import (
+    AggTradeRepository,
+    BookTickerRepository,
+    DepthRepository,
+    KlineRepository,
+)
 
 
 def write_agg_trade_file(path: Path) -> None:
@@ -93,6 +98,36 @@ def write_book_ticker_file_with_int_timestamp(path: Path) -> None:
     pq.write_table(table, path)
 
 
+def write_kline_file(path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    table = pa.table(
+        {
+            "event_id": ["k2", "k1"],
+            "timestamp": ["2026-01-01T00:01:00Z", "2026-01-01T00:00:00Z"],
+            "open_price": [101.0, 100.0],
+            "high_price": [102.0, 101.0],
+            "low_price": [100.0, 99.0],
+            "close_price": [101.5, 100.5],
+            "volume": [2.0, 1.0],
+            "trade_count": [20, 10],
+        }
+    )
+    pq.write_table(table, path)
+
+
+def write_depth_file(path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    table = pa.table(
+        {
+            "timestamp": ["2026-01-01T00:00:00Z", "2026-01-01T00:00:00Z"],
+            "percentage": [0.001, -0.001],
+            "depth": [1.5, 1.0],
+            "notional": [150.0, 100.0],
+        }
+    )
+    pq.write_table(table, path)
+
+
 def test_agg_trade_repository_missing_directory_returns_empty(tmp_path: Path) -> None:
     repo = AggTradeRepository(tmp_path)
     assert repo.available_dates("BTCUSDT") == []
@@ -158,3 +193,43 @@ def test_book_ticker_repository_handles_int_timestamp(tmp_path: Path) -> None:
     repo = BookTickerRepository(tmp_path)
     records = repo.load("BTCUSDT", "2026-01-01", 10)
     assert records[0].timestamp == datetime.fromtimestamp(1_767_225_600, tz=UTC)
+
+
+def test_kline_repository_loads_and_sorts_records(tmp_path: Path) -> None:
+    path = tmp_path / "klines" / "BTCUSDT" / "1m" / "BTCUSDT-klines-1m-2026-01-01.parquet"
+    write_kline_file(path)
+    repo = KlineRepository(tmp_path)
+
+    records = repo.load("BTCUSDT", "2026-01-01", 10)
+
+    assert repo.available_dates("BTCUSDT") == ["2026-01-01"]
+    assert [record.event_id for record in records] == ["k1", "k2"]
+    assert records[0].close == 100.5
+    assert records[0].trade_count == 10
+
+
+def test_kline_repository_missing_directory_returns_empty(tmp_path: Path) -> None:
+    repo = KlineRepository(tmp_path)
+
+    assert repo.available_dates("BTCUSDT") == []
+    assert repo.load("BTCUSDT", None, 10) == []
+
+
+def test_depth_repository_loads_grouped_snapshot_levels(tmp_path: Path) -> None:
+    path = tmp_path / "bookDepth" / "BTCUSDT" / "BTCUSDT-bookDepth-2026-01-01.parquet"
+    write_depth_file(path)
+    repo = DepthRepository(tmp_path)
+
+    snapshots = repo.load("BTCUSDT", "2026-01-01")
+
+    assert repo.available_dates("BTCUSDT") == ["2026-01-01"]
+    assert len(snapshots) == 1
+    assert [level.percentage for level in snapshots[0].levels] == [-0.001, 0.001]
+    assert snapshots[0].levels[0].notional == 100.0
+
+
+def test_depth_repository_missing_file_returns_empty(tmp_path: Path) -> None:
+    repo = DepthRepository(tmp_path)
+
+    assert repo.available_dates("BTCUSDT") == []
+    assert repo.load("BTCUSDT", "2026-01-01") == []

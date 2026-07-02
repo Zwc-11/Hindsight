@@ -1,18 +1,41 @@
 {
+  "schema_version": "1.0.0",
   "datasets": [
     {
-      "name": "binance_usdm",
+      "name": "hyperliquid_event_stream",
       "label": "synthetic",
-      "purpose": "offline smoke data for hindsight run and hindsight compare",
-      "symbol": "BTCUSDT",
-      "date": "2026-01-01"
+      "source": "seeded synthetic fixture generated for offline replay smoke tests",
+      "purpose": "offline event stream for hindsight run",
+      "symbol": "SOL-PERP",
+      "utc_window": {
+        "start": "2026-01-01T00:00:00Z",
+        "end": "2026-01-01T00:02:20Z"
+      },
+      "content_hash": "9dcfee26195accde0dc54d15d8336fb64a3050c0cd30e0c461a194657c61a1bb",
+      "files": [
+        {
+          "path": "hyperliquid/silver/hyperliquid/fills/SOL/SOL-20260101.parquet",
+          "rows": 8
+        }
+      ]
     },
     {
-      "name": "hyperliquid",
+      "name": "hyperliquid_markout",
       "label": "synthetic",
-      "purpose": "offline markout rows for hindsight benchmark",
+      "source": "seeded synthetic fixture generated for offline markout demos",
+      "purpose": "offline markout rows for hindsight demo and hindsight benchmark",
       "symbol": "SOL-PERP",
-      "date": "20260101"
+      "utc_window": {
+        "start": "2026-01-01T00:00:00Z",
+        "end": "2026-01-01T00:02:20Z"
+      },
+      "content_hash": "e795b9ae204cd8a57de4154ef6d2f6dbf6f2ed94081f929be745ad62437666ee",
+      "files": [
+        {
+          "path": "hyperliquid/gold/hyperliquid/markout/SOL/SOL-markout-20260101.parquet",
+          "rows": 8
+        }
+      ]
     }
   ]
 }

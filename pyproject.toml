@@ -16,6 +16,8 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
+    "coverage[toml]>=7",
+    "mypy>=1.10",
     "pytest>=8",
     "ruff>=0.5",
 ]
@@ -42,3 +44,16 @@ target-version = "py312"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
+
+[tool.coverage.run]
+source = ["hindsight"]
+
+[tool.coverage.report]
+fail_under = 95
+show_missing = true
+
+[tool.mypy]
+python_version = "3.12"
+packages = ["hindsight"]
+strict = true
+warn_unused_configs = true
