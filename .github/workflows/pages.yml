@@ -17,6 +17,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      pages_ready: ${{ steps.pages.outputs.ready }}
 
     steps:
       - uses: actions/checkout@v5
@@ -37,16 +39,57 @@ jobs:
           test -f _site/demo/tearsheet.html
           test -f _site/benchmarks/2026-07-07-flagship/tearsheet.html
 
+      - name: Check GitHub Pages deployment source
+        id: pages
+        env:
+          API_URL: ${{ github.api_url }}
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          response="$RUNNER_TEMP/pages.json"
+          status=$(curl -sS -o "$response" -w "%{http_code}" \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "$API_URL/repos/$REPOSITORY/pages" || true)
+
+          if [ "$status" = "200" ]; then
+            build_type=$(python - "$response" <<'PY'
+          import json
+          import sys
+
+          with open(sys.argv[1], encoding="utf-8") as handle:
+              print(json.load(handle).get("build_type") or "")
+          PY
+          )
+          else
+            build_type=""
+          fi
+
+          if [ "$status" = "200" ] && [ "$build_type" = "workflow" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice title=GitHub Pages deployment skipped::Configure Settings > Pages > Build and deployment > Source = GitHub Actions to activate deployment. The site artifact was still built and verified."
+            {
+              echo "### GitHub Pages deployment skipped"
+              echo
+              echo "The site artifact was built and verified, but this repository is not configured to deploy Pages with GitHub Actions yet."
+              echo
+              echo "Set **Settings > Pages > Build and deployment > Source** to **GitHub Actions** to enable deployment on the next run."
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+
       - uses: actions/configure-pages@v6
-        with:
-          enablement: true
+        if: steps.pages.outputs.ready == 'true'
 
       - uses: actions/upload-pages-artifact@v4
+        if: steps.pages.outputs.ready == 'true'
         with:
           path: _site
 
   deploy:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && needs.build.outputs.pages_ready == 'true'
     needs: build
     runs-on: ubuntu-latest
     environment:
