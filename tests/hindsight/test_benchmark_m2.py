@@ -222,6 +222,13 @@ def test_run_benchmark_limit_applies_across_date_panel(tmp_path: Path) -> None:
     )
 
     assert artifacts.csv_path.exists()
+    assert artifacts.leakage_path.exists()
+    assert artifacts.report_json_path.exists()
+    assert artifacts.tearsheet_path.exists()
+    report = json.loads(artifacts.report_json_path.read_text(encoding="utf-8"))
+    assert report["meta"]["report_schema"] == 2
+    assert report["sample_data"]["rows"] == 4
+    assert report["comparison"]["verdict"] == "blocked"
     assert len(artifacts.result.rows) == 2
 
 
@@ -273,6 +280,8 @@ def test_benchmark_cli_accepts_date_ranges(tmp_path: Path) -> None:
 
     assert exit_code == 0
     assert (output / "hindsight-leaderboard.csv").exists()
+    assert (output / "report.json").exists()
+    assert (output / "tearsheet.html").exists()
     leakage = json.loads((output / "leakage.json").read_text(encoding="utf-8"))
     assert leakage["verdict"] == "pass"
 
@@ -322,6 +331,13 @@ def test_benchmark_cli_writes_leaderboard(tmp_path: Path) -> None:
 
     assert exit_code == 0
     assert (output / "hindsight-leaderboard.csv").exists()
+    assert (output / "report.json").exists()
+    assert (output / "tearsheet.html").exists()
+    report = json.loads((output / "report.json").read_text(encoding="utf-8"))
+    assert report["meta"]["report_schema"] == 2
+    assert report["comparison"]["verdict"] == "blocked"
+    assert report["falsification"]["available"] is True
+    assert report["falsification"]["caught"] == report["falsification"]["defects"] == 5
     leakage = json.loads((output / "leakage.json").read_text(encoding="utf-8"))
     assert leakage["verdict"] == "pass"
     assert all(audit["verdict"] == "pass" for audit in leakage["audits"])

@@ -1,0 +1,84 @@
+{
+  "all_caught": true,
+  "cases": [
+    {
+      "caught": true,
+      "defect": "label_lookahead",
+      "detail": "Predictor reads the realized label; future-only perturbation must not move it.",
+      "evidence": [
+        "sample[3]",
+        "sample[5]",
+        "sample[7]",
+        "sample[13]",
+        "sample[15]",
+        "sample[17]",
+        "sample[19]",
+        "sample[21]",
+        "sample[23]",
+        "sample[25]",
+        "sample[27]",
+        "sample[29]",
+        "... 76 more"
+      ],
+      "evidence_count": 88,
+      "probe": "lookahead_perturbation",
+      "statistic": "88/256 predictions moved under a -1 bar label shift"
+    },
+    {
+      "caught": true,
+      "defect": "feature_from_future",
+      "detail": "A feature equal to the future label leaks the answer into training.",
+      "evidence": [
+        "markout_bps_10s"
+      ],
+      "evidence_count": 1,
+      "probe": "target_leakage",
+      "statistic": "1 target-derived feature(s) in the design matrix"
+    },
+    {
+      "caught": true,
+      "defect": "survivorship",
+      "detail": "Restricting to survivors hides the names that blew up and inflates the edge.",
+      "evidence": [
+        "LUNA-PERP"
+      ],
+      "evidence_count": 1,
+      "probe": "survivorship",
+      "statistic": "1 symbol(s) present at start dropped from evaluation"
+    },
+    {
+      "caught": true,
+      "defect": "fold_contamination",
+      "detail": "Without a purge gap, a train sample's label window leaks into the test fold.",
+      "evidence": [
+        "train[0]",
+        "train[1]",
+        "train[2]",
+        "train[3]"
+      ],
+      "evidence_count": 4,
+      "probe": "temporal_overlap",
+      "statistic": "4 train label(s) overlap a test label with purging removed"
+    },
+    {
+      "caught": true,
+      "defect": "fee_slippage_zeroing",
+      "detail": "Zero fees and zero slippage book a fill no real account ever receives.",
+      "evidence": [
+        "maker_fee_bps",
+        "taker_fee_bps",
+        "slippage_impact_bps"
+      ],
+      "evidence_count": 3,
+      "probe": "zero_cost_execution",
+      "statistic": "all execution frictions set to zero"
+    }
+  ],
+  "caught": 5,
+  "defects": 5,
+  "expected_defects": 5,
+  "run_hash": "2ee577783ddbc6ee4782e20dd2b77e67b029e590fd1f3924a63a74c7b49e6f08",
+  "sample_rows": 256,
+  "schema_version": "1.1.0",
+  "target_name": "markout_bps_10s"
+}

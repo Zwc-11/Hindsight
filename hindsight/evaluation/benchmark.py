@@ -161,6 +161,49 @@ def maker_side_policy(records: list[HyperliquidMarkoutRecord]) -> QuotePolicy:
     )
 
 
+def phase0_policy_suite(records: list[HyperliquidMarkoutRecord]) -> tuple[QuotePolicy, ...]:
+    """Eight non-leaky policy trials for flagship PBO/DSR diagnostics."""
+
+    if not records:
+        raise ValueError("phase0 policy suite requires at least one record")
+    size_median = _median([record.quantity for record in records])
+    price_median = _median([record.price for record in records])
+    return (
+        quote_all_policy(len(records)),
+        maker_side_policy(records),
+        QuotePolicy(
+            name="maker_side_negative",
+            quote_mask=tuple(record.maker_side < 0 for record in records),
+            feature_names=("maker_side",),
+        ),
+        QuotePolicy(
+            name="buy_only",
+            quote_mask=tuple(record.side.value == "buy" for record in records),
+            feature_names=("side",),
+        ),
+        QuotePolicy(
+            name="sell_only",
+            quote_mask=tuple(record.side.value == "sell" for record in records),
+            feature_names=("side",),
+        ),
+        QuotePolicy(
+            name="large_trade_filter",
+            quote_mask=tuple(record.quantity >= size_median for record in records),
+            feature_names=("quantity",),
+        ),
+        QuotePolicy(
+            name="small_trade_filter",
+            quote_mask=tuple(record.quantity < size_median for record in records),
+            feature_names=("quantity",),
+        ),
+        QuotePolicy(
+            name="price_above_median",
+            quote_mask=tuple(record.price >= price_median for record in records),
+            feature_names=("price",),
+        ),
+    )
+
+
 def leaky_markout_policy(
     records: list[HyperliquidMarkoutRecord],
     *,
@@ -241,6 +284,16 @@ def _pbo_value(rows: tuple[BenchmarkRow, ...]) -> float | str:
     if fold_count % 2 != 0:
         return "n/a (requires even trial count)"
     return probability_of_backtest_overfit(scores_by_policy)
+
+
+def _median(values: list[float]) -> float:
+    if not values:
+        raise ValueError("cannot take median of an empty sequence")
+    ordered = sorted(values)
+    midpoint = len(ordered) // 2
+    if len(ordered) % 2:
+        return ordered[midpoint]
+    return (ordered[midpoint - 1] + ordered[midpoint]) / 2
 
 
 def _benchmark_hash(rows: tuple[BenchmarkRow, ...], pbo: float | str) -> str:

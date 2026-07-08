@@ -1,0 +1,2699 @@
+{
+  "coverage": {
+    "available_dates": [
+      "20260527",
+      "20260528",
+      "20260529",
+      "20260530",
+      "20260531",
+      "20260601",
+      "20260602",
+      "20260603",
+      "20260604",
+      "20260605",
+      "20260606",
+      "20260607",
+      "20260608",
+      "20260609",
+      "20260610",
+      "20260611",
+      "20260612",
+      "20260613",
+      "20260614",
+      "20260615",
+      "20260616",
+      "20260617",
+      "20260618",
+      "20260619",
+      "20260620",
+      "20260621",
+      "20260622",
+      "20260623",
+      "20260624",
+      "20260625"
+    ],
+    "available_symbols": [
+      "BTC-PERP",
+      "ETH-PERP",
+      "SOL-PERP"
+    ],
+    "failures": [],
+    "funding_partition_count": 90,
+    "markout_partition_count": 90,
+    "partition_count": 90,
+    "ready": true,
+    "requested_dates": [
+      "20260527",
+      "20260528",
+      "20260529",
+      "20260530",
+      "20260531",
+      "20260601",
+      "20260602",
+      "20260603",
+      "20260604",
+      "20260605",
+      "20260606",
+      "20260607",
+      "20260608",
+      "20260609",
+      "20260610",
+      "20260611",
+      "20260612",
+      "20260613",
+      "20260614",
+      "20260615",
+      "20260616",
+      "20260617",
+      "20260618",
+      "20260619",
+      "20260620",
+      "20260621",
+      "20260622",
+      "20260623",
+      "20260624",
+      "20260625"
+    ],
+    "requested_symbols": [
+      "SOL-PERP",
+      "ETH-PERP",
+      "BTC-PERP"
+    ],
+    "source_hash": "ee93ffebff7149b6090c57b155b8a369fa31b1d2689d3523baaa3e62ac8ca96b",
+    "top_of_book_partition_count": 90,
+    "trade_partition_count": 90
+  },
+  "partitions": [
+    {
+      "date": "20260527",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260527.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "ca96240caf958f0fad4de9f4a748b2f5cb4ece113c29b3aa9f9d3d22142e07f3"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260527.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "5267aaf5e9c63857e14913b6e7ce493457237bda1594b5465adef2ca86197774"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260527.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "e8b0c3c5f143e1c1521f1be38461cdcc7d1489b4808f5b32c5caa95cf806588b"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260527.parquet",
+        "present": true,
+        "rows": 191740,
+        "sha256": "ed26c4bb947d79cd813d66024763d2bdcfcce2d0a3b55e43d811dc8e77f94013"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260528",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260528.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "97a490ec33b5bbbb4a8d79cecae38511b140bb76f3434022fcad67cdb90e09e0"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260528.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "555205223f5b9fee074296f123da40e3d9ad8bbdcfad721369b67abd458fcc8a"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260528.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "b053b2ac80a1768ab44565a9b44d52f38ef3f61282ffb3d02be82ed125b7c054"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260528.parquet",
+        "present": true,
+        "rows": 208172,
+        "sha256": "e76274f3143cbdc30082238aa3b6424214c52be0f6fa1ef0fa264b042b4902f9"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260529",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260529.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "790bc20178c5a05e218a8e06eecc8179be48694bf376e31759fb55ac94843ff9"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260529.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "157264cad738bbaad2e55963d81efd7a65086dfcb4dd75f22f707e661d6eebc1"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260529.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "8db7c7a09838d29b0e70e1dd8ac43ba95b8a2d65d9cacb0f0c8bf76247e22154"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260529.parquet",
+        "present": true,
+        "rows": 147842,
+        "sha256": "1564e1a0acd56e966b91e0ccd1620467220ed142336ef15a79c6dbe75c1e525c"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260530",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260530.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "bd8cadab5b0480ae4ed9ba902116ecb655bbafd52e1456b299a08dc3cc1346bf"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260530.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "fb79c3359f5524740b99c693634dae633d99060cf599221a2f8b9f532fbf4b84"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260530.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "cd584554b4c96664713c8a53a767f29f2ca125a9bc997094906c3ee26433450a"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260530.parquet",
+        "present": true,
+        "rows": 75930,
+        "sha256": "d8d601bb59bb3ead7ad31ca72ea1ff2578bd337fef97796a65c6d6e60ee85142"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260531",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260531.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "dd1958b4e6ad61a38b05ad9e587b11a7197caa15dfad6996b3f0f41a2186dcab"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260531.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "a0bce9a55dc3bf5230078a06e445ed7f95ed3fae03d8ef4d8636c923f31f7780"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260531.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "8042b4bdf47eea1b214d6c9731cef6021a5f3b900e7b1ecb4212e2f9ece61f8a"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260531.parquet",
+        "present": true,
+        "rows": 100958,
+        "sha256": "5e0fab1f01f089a2cdab709ae289a11cbd94760a6fdbbaa9f8ec55801d441415"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260601",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260601.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "32d438dcfba5c7b97e8ac8038131a6d8296f6f2c0504fca8237b8a00f4ee056c"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260601.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "4036a6d697686dc6ae8bd222e0362f24a85e5ee3ba39a33a6f8761cdc9059a83"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260601.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "fb42f3933c13f63a15eb9b48b40135a2e72e61bf1ffeffb7e248a79af03e087f"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260601.parquet",
+        "present": true,
+        "rows": 210592,
+        "sha256": "5a8c3c68991cf9114ae9bbda68834daa415182d952fe695aacac825420477cce"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260602",
+      "evaluated_rows": 4518,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260602.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "0322ed7a13fdca8e569f42bc5fa0ac5517a05439aee23c6d3aff72fa1eb643ab"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260602.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "7cc38e3f3169218a35410e2645ca780f5b6b4d2a46a445ab1e72dc8a5bdc7ad9"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260602.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "09f0ce57a747c6d0aa818e80f05a63b674d923b6e1f7f5807c118976b07b618b"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260602.parquet",
+        "present": true,
+        "rows": 4518,
+        "sha256": "328c6a0967381859f875812161324961c0a2260f2c01e73da7d8be8b823e6030"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260603",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260603.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "7672248a22f559b5d040ac491e006305f30f7360661b3c32e4f2d70b3b23be6a"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260603.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "4efe50a26f3e8506bbe1ede2a136d52c731ce7e24cb44dfcba4d31e4bf4837a3"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260603.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "9fe743d49c4d3f4be2821c8dcd3d1968013e130ad6d55dbd69821f3d4c90647a"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260603.parquet",
+        "present": true,
+        "rows": 14840,
+        "sha256": "7e0e92a00e64f6d69552bc083f014d7635d7146d22602689ecc8c57be547b8a9"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260604",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260604.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "a318484cc2e1d64b6b39649f9d6ef24847ed16bdcbe60de98161e8914879eaa9"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260604.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "acae82aef974cfa9ddffff0b97a782fb134d495167e775e0aec5697a74a2b891"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260604.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "f2a18af029c25b213054180ec1cc5c0c4f6f511f8554f1fa31b04c245cf0d835"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260604.parquet",
+        "present": true,
+        "rows": 22498,
+        "sha256": "45ea7ab2258626da86c81e79bcd67a73abd936bcf97756a6d07ec7d912722eeb"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260605",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260605.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "f9f380e8daa231cc8e02f6d53e48dc6a24a4f4f7630b5ff3cf137490fb5b60b7"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260605.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "96f2def8870a38b8e15cb38e385a5f7fd5bc94b6b82fb55aa8371e34a1bf946e"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260605.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "ca8d45f505ed0b6fd4baeb646a0a35f32a80e397999f0f3850d30a2d5928af04"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260605.parquet",
+        "present": true,
+        "rows": 12238,
+        "sha256": "1c31b1c39c4851755103c9cde76123fdee472dd31e0c2a08bcee2b3fba1eacf5"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260606",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260606.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "32af14b4e3306a07597c3cd2b888c039c4cb7a747748f69e1d14775042ba75a1"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260606.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "673bf54879dd13d58ee3201344eefc8135df89b0783eecfc92ce9335917b89fe"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260606.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "421f638f69d608d5106f4fbfb7b0d6ea50dca24ed0f505f9eb5e842c9bd57ff6"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260606.parquet",
+        "present": true,
+        "rows": 10914,
+        "sha256": "d0af352de0a1d5d2550796a960993ede866c26ef5a7bcf9757147f8609e84ed0"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260607",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260607.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "cfee90b688dd6e0535f932a168d144384b878527be22509800c085bdb5a26cfb"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260607.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "536019f0b1febd4396b4b20eb996653af443b58fbceb0c30c362dee2e58093a2"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260607.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "52b9bc4e02fd4b56f00a23baff2d6cd31a83de98fb42e61e1fb6cf2e4554d508"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260607.parquet",
+        "present": true,
+        "rows": 8698,
+        "sha256": "fc18094d3d325fe1e02729fcb08b6c0cdbf214a57b42a5a01ad79f8a3f01d45b"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260608",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260608.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "f0e1322cb7e2fe10d933e85f626fc81293fa88ddaaae32105bdd98b58c300b3d"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260608.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "26839c9b6c3ca9ba50ce72120831edee4649bb64b5fb2ee48fb732bf9f1189d5"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260608.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "2584fc8f2d961114bd7ca5d5b32bf48e280ea4dfe2856b4a3fdf352264480a6b"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260608.parquet",
+        "present": true,
+        "rows": 10162,
+        "sha256": "ef7fd955a42c6bc27f1b1e935a394e18c6dd1fb4e71dd31d58bac5f04ad192ea"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260609",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260609.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "039639c4cae38a790c2d9e8e14c762b2ce83855f8b5698b0e6dd379f997011fc"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260609.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "078b3cc6c5477fc7d42f7736a7fdae51899288eb4d3fc0d62ed6af687b20ee88"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260609.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "becd6764cd6d99d7cbf1e48a1fa540c078d69fc39dafde9844fe1b630d9338bd"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260609.parquet",
+        "present": true,
+        "rows": 12648,
+        "sha256": "099647216b46920882ce747d1e659673b794f3ae57ef8c2e227f309479a83e1f"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260610",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260610.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "44c155eff62b0dd05586fa28f7313de4d1c64f07043bc64af0e93cb8807dc109"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260610.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "f092cea0975b2b71add76758f0b0b284f1cc26dadd01cf4e8e1125bba6744e37"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260610.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "6e4c0a168a549aef54f63d79a3c4b49ed50f4860f20810a1a983793f477a2727"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260610.parquet",
+        "present": true,
+        "rows": 5700,
+        "sha256": "d09bcd4c67fcccdd542a831560daf37d35999bce29a569bd276ac5cafaf71b7b"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260611",
+      "evaluated_rows": 4672,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260611.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "79e204d17500243dc229c21b0366358321affbb246e2ca6deaaa6b3e61fad25e"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260611.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "80094d193fa66d9665974284a420990eb406782096926e69289dcd76f9daa419"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260611.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "717069d75745c9d55eca1d8c19a49018bbeed9fd1c3b6a4f02e8e1ee068eaa6a"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260611.parquet",
+        "present": true,
+        "rows": 4672,
+        "sha256": "10c172b4fb2daa692d73024c52adff3383dc908e57e55db7e04dc98380f6b13b"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260612",
+      "evaluated_rows": 3854,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260612.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "de3e744f3f27db88eb16fc1bfa154b799b35d5270386eee1900e658adb004eb3"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260612.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "4dd0271719d5cb8db8608fbb800b5d2d8763eab7049ae93072faa3771af5fa7c"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260612.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "74fb8eb1dc078c211bb8e1fd6dd870b0247571d27296b3e99f3aec8559572837"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260612.parquet",
+        "present": true,
+        "rows": 3854,
+        "sha256": "c8f328a84c0e6e3ffd727f3a697ee8c09cbac6185546ea67346297f0a0f8cd1b"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260613",
+      "evaluated_rows": 2916,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260613.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "4096d2546c4459dc799c2d63e4922a44d972adc96d565590cfc5bf66369e6300"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260613.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "bd22a94ca83f1a7ec4a33ed71a4a23046158ff8fb4fcce5b6725ab5784590f37"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260613.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "f8f38941dc32fb774f412aed13d49c00054dc69e5ac5c9494df337df58d40459"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260613.parquet",
+        "present": true,
+        "rows": 2916,
+        "sha256": "69e7b0ef52c815d99ce379f55723657ba2d9c8fcf6bbb963f9142c23e9f15f4b"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260614",
+      "evaluated_rows": 3622,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260614.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "70df614cd970fbc930498b14ef8857eed6591e5e6107ebda5d9a5d563ed7b222"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260614.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "b2bbbaf87031f139754cf99d7c1a0f2a61cfd26fbee3071eb81db924bd3ecc78"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260614.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "0ab8a401c234e8d65eadf928bf54ac4381898ff0a883a38ffb6451db3d50345c"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260614.parquet",
+        "present": true,
+        "rows": 3622,
+        "sha256": "6444ff87844b024eeb44b1da24b11c8dfe5aa582cab2c98f86a1e46d98e8b3d6"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260615",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260615.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "8ce5a67e3e9629a9e5460abaedd0eae81bb3664b2962c99b2fce98ac0ecad507"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260615.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "47ffe8b456f74da42696f2ddc468e4dc64e5f00c3b4de76d9978b241a1c131a4"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260615.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "3281ad876700bc37dcc0be09f35e75fffaa608136d0fdee99950cc1e4eb21f09"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260615.parquet",
+        "present": true,
+        "rows": 10984,
+        "sha256": "a33dcd82132309f2234b14f4464bd1453569c8d58d0f9ee80d64210f1b96dec7"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260616",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260616.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "07319c87b01fbd642aeb7117a101d4a065d120e1b9426c217b4d5437b9a737ff"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260616.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "5698a0fc9a4f921e0ffa41bee113cb968579ed8f6d26b9eeb764b0ba603e4220"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260616.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "0d4d867d4a1511343d8dc3661db61f9ade62f7e6d830b11a103a9b716c4ab73a"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260616.parquet",
+        "present": true,
+        "rows": 9216,
+        "sha256": "9a7729c4a7b173281e5cd2cb17f62e64c7f7948ba4f23a987d1fd5506459f5c5"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260617",
+      "evaluated_rows": 4990,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260617.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "a98b26627d0d3e411261933e83ed5a73ccd943b02c8d7a73a074de455fe0bddf"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260617.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "2128174a752b26af15435c5b60bae4d50fb5711379a10799b528359a7989ff79"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260617.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "9f80c8a2c00c76399b81a9d7dc8721f75c93aa12f95f6e806f2666475962f71d"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260617.parquet",
+        "present": true,
+        "rows": 4990,
+        "sha256": "94ecf62a0f2245bbdfb1f1b73e2d51fe6d5f30d5b0292071ad08eed90d4e71ed"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260618",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260618.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "d652bbaf7558bcb204dc7793d5a9f4e900c5e202673bc5ce5a641c60f97602fa"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260618.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "1de834b230c8a4b5de686a2e05bd25589b64a88fbece1c4b02aff0f7f66c2f99"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260618.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "fa1aa28c83c11e9e2c48927b3ed189d88be39c1e0372c3e235735660f305bcfb"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260618.parquet",
+        "present": true,
+        "rows": 6312,
+        "sha256": "7721d209ec59ff1ae651fa1f07b149b17826bb6c0fc699f209f79d15b0fe757d"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260619",
+      "evaluated_rows": 3418,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260619.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "1e76a0ac8d76de4711740ecbc4e68d5270fb3f0331dc50aa64d0241eb32539bb"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260619.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "ac0923e37ea25da3b72dff186e6f6dc6d0146980e184c6262fd1e0f073d96cc0"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260619.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "8f0b44506ae55b58807a66ecaeddcb59c0f1f978e6c269c6f39a37bcd0f4ebe7"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260619.parquet",
+        "present": true,
+        "rows": 3418,
+        "sha256": "8c7939cbddf461c2369dff70be66b7d18c1902f1e7c53fb336eff6f0d4d92585"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260620",
+      "evaluated_rows": 4642,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260620.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "a18556c7446a34e4951b5ba5cc1147e493899f9387dfd2763eb98463aff5b673"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260620.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "c81b6ce1319d554488ddc3e0d3a48911d768768d188c00dcfc2bedbd45b85b44"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260620.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "74be9c2fab2405737f18bc47de6f623734f895ff753099f9299db80802fedc2c"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260620.parquet",
+        "present": true,
+        "rows": 4642,
+        "sha256": "5e8e9038dc2ecef46c433caabed68f2340a2257989ac88f39cb5763d4d38c4ce"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260621",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260621.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "858f42db281c76e6ceaa82ccf03667f8f28e0224a4d56b28ec57f9285be2e1bb"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260621.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "13d3fda66c69d72d16b134a3528c34b433633d3acff9ec1d98f87ec0ab1b30ab"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260621.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "edb9b85462aa68e70ac8c0ea09fdcb9fbaa254747489f9d296700066fe721f29"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260621.parquet",
+        "present": true,
+        "rows": 6548,
+        "sha256": "9f3de95f07a5f15c3735e1002ebbd1b7fdcb27855014b100466121cba0c525f0"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260622",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260622.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "c3e519a57f57d089870a300f4edddd020893640356ec0f958d998224153f3125"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260622.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "38119a7e4ab797ca6a95d6ed97433e2115da34c06782dccd5547dca751b5c08f"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260622.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "6e29dd18194d12559dff63995bfc581d809aaa00fa0bb666d81d7b3c8300f571"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260622.parquet",
+        "present": true,
+        "rows": 10486,
+        "sha256": "130db06f410807d26b7be91beedd4c05410a24205f21895b97f5b899dbce6dfa"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260623",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260623.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "238d4aa46169399f8e81890af311daa3cba1c3cb5b22033bf2d6e4cf905d1907"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260623.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "9a69ef695de4e4b6ac255f168022b0326cbb29685ce8b4d68179877a1c4a9e09"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260623.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "6787bd15b71ac0c4039857c2659485ccdb89b183fad3be21a9ed8eae58854fd7"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260623.parquet",
+        "present": true,
+        "rows": 7042,
+        "sha256": "804dac835768efba0c7e8aad43776d599e7878c6a980db2839d0e6b220c27407"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260624",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260624.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "309d634950995f20bad76d524a9a507ae230818db693d95480ed845eacef61c6"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260624.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "e42829068d3c4bc11e8c16d121f261d99e95410049637c254892891cc31a4047"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260624.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "82ba39c6a6352b378eeff7a489e6e37e9afe01a26240b09c13a09e2851b17960"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260624.parquet",
+        "present": true,
+        "rows": 10444,
+        "sha256": "08588880afe2352a61376316a3c40ef111a1d0424d19278e569f148e4d2689d2"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260625",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\SOL\\SOL-20260625.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "86d2ee59fd00f7aea247988bc75aec82860c5614a47cb96ec628a3bb57c7c160"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260625.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "31497f6917ab07ecc2eb0465473f92c6f0ee0e7381d445310796513ef9e69941"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\SOL\\SOL-20260625.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "a8bea96c088c339e145b6fbd0ed63e4bcdea03592d2741250bbff1b3994e44c3"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\SOL\\SOL-markout-20260625.parquet",
+        "present": true,
+        "rows": 8704,
+        "sha256": "747a9ade2ac77ccd70e3f9ea8dda0d8bfff0c117c26737ec5d64c5280156106f"
+      },
+      "symbol": "SOL-PERP"
+    },
+    {
+      "date": "20260527",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260527.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "66d477a2aa749c303aa7ff5ed57bf1a39447ee9aec25d0cad98ccfd4357e498a"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260527.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "5267aaf5e9c63857e14913b6e7ce493457237bda1594b5465adef2ca86197774"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260527.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "bd6be83962f2f6a6c4832793fd40e396bd486b01a8b5a1a44809ce38f7a8bffb"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260527.parquet",
+        "present": true,
+        "rows": 7464,
+        "sha256": "9148ffb7a83ce2c2e2c86f101aea78ca2b1327c797d71492a62af8031297aa2a"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260528",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260528.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "f5a8ab4e236ea0bc3bcf92730a75ce9bbbb0afd5994fcc5cf1e9521cadde1183"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260528.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "555205223f5b9fee074296f123da40e3d9ad8bbdcfad721369b67abd458fcc8a"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260528.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "7056895890eeabb0df59cbc722884d7872972efd021fe52593cf493d06486669"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260528.parquet",
+        "present": true,
+        "rows": 11858,
+        "sha256": "150e5d877557059abb9fee42f566b0bec633790f3d3d0ff1fd4c6e02e5b6b928"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260529",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260529.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "fcb68232776dfbb7709fe7db3a7e993a0c51b4d74a3c0221b8f62e4856495a30"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260529.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "157264cad738bbaad2e55963d81efd7a65086dfcb4dd75f22f707e661d6eebc1"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260529.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "064aec99b6dae3d50b8f06fdfe02ee52fce6f3aad387212d68e73c263d061e7f"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260529.parquet",
+        "present": true,
+        "rows": 10836,
+        "sha256": "ef47bb6f0f36ade29c046741aecd327e64ba6b6b6b8239b2cf621094bcd13582"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260530",
+      "evaluated_rows": 4766,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260530.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "0e7d20a346d1841109972b7a8893a4c24617e12060220cafacdfb7a16684020d"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260530.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "fb79c3359f5524740b99c693634dae633d99060cf599221a2f8b9f532fbf4b84"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260530.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "6925ec4272ed67a59c21ff9b4e90168fdc23bfd63baa23afdd75f27873f963c7"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260530.parquet",
+        "present": true,
+        "rows": 4766,
+        "sha256": "5c21d753859fe17de8b2825d752e4fe837f78168d6b3d9426b20346d54a89932"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260531",
+      "evaluated_rows": 4730,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260531.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "87a240158514bdc1a6af93a3b5acd0e02a3e04d481c6a78d00a1944ff90bbba6"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260531.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "a0bce9a55dc3bf5230078a06e445ed7f95ed3fae03d8ef4d8636c923f31f7780"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260531.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "0a64012a1189aec3f73988a01d0224392d9789fc21b1318df1cd471eb2018441"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260531.parquet",
+        "present": true,
+        "rows": 4730,
+        "sha256": "111723a78b860a5bdc7941cce84fd0374f2380f68dbe0e54d5940fb7f3c59a48"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260601",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260601.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "b6b051f9cfa9f51907861f304f7fcd59fd3076bb5b74cf1a253ad4cd8c725f21"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260601.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "4036a6d697686dc6ae8bd222e0362f24a85e5ee3ba39a33a6f8761cdc9059a83"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260601.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "5645661bf037bd2e9d2dd5fccee0d0b28bdb6592b3ece3542f3e73fa02965780"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260601.parquet",
+        "present": true,
+        "rows": 12566,
+        "sha256": "c322e4d53a350a7983a68619a8bccd4a56ab89680bfa45ed1165ce5be6195cad"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260602",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260602.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "2cf777d946ef68cac359a56a263aafabefe24be620fea963c5ff60ed991df502"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260602.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "7cc38e3f3169218a35410e2645ca780f5b6b4d2a46a445ab1e72dc8a5bdc7ad9"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260602.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "584b6ef4d6c60b4cf690d6d101d7ee84592709b6eee302a4f59b1ff5067910cf"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260602.parquet",
+        "present": true,
+        "rows": 9584,
+        "sha256": "9798ee4012d7d8a617b0292819243fc9bad17b117937a94e1f8ef721f151e9ee"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260603",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260603.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "6005298c92faf48bed91530e672159eef51132dd025880157c1385a9dc804ac5"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260603.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "4efe50a26f3e8506bbe1ede2a136d52c731ce7e24cb44dfcba4d31e4bf4837a3"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260603.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "2acb033eec8c216d78b4a2c80cc7b02589317abcf489c25b9d2ab8ef6f89905a"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260603.parquet",
+        "present": true,
+        "rows": 16466,
+        "sha256": "d536c7fad50a34130f95f167f33ad7a036df71bb0df03565b275024324222900"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260604",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260604.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "99ccbed9f6bf9d85b0a0c784eb79062419ab9936352433af75c142aa3d7501f3"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260604.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "acae82aef974cfa9ddffff0b97a782fb134d495167e775e0aec5697a74a2b891"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260604.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "9f25eb0ac1e57cd60f13c72e15a8b44a1c7a2b36b747cb4ef0f927ac26ce4675"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260604.parquet",
+        "present": true,
+        "rows": 48050,
+        "sha256": "04953d47d6101f4edf8a30efa478986ec80448dd97a493270675cd162b4414bb"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260605",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260605.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "32ec1aab32d5c0697d27ca0d7c42500e352f5eb71d032d7ba6df33bed685cb97"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260605.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "96f2def8870a38b8e15cb38e385a5f7fd5bc94b6b82fb55aa8371e34a1bf946e"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260605.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "5e7da47c845b2117b1ddcf01c80a769cef7b4969d367c76e67aecf764b8a12c7"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260605.parquet",
+        "present": true,
+        "rows": 16902,
+        "sha256": "1dc7b1f5f8db09fcdf041291f1b8faf0e4e7f3e07a49d8203b857823494f0cb3"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260606",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260606.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "db099f1228b9e8092c24a64456955e560576ab02e52d98f0ac48cf716d700c68"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260606.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "673bf54879dd13d58ee3201344eefc8135df89b0783eecfc92ce9335917b89fe"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260606.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "133e3d8d66d711fd0c5662c2fd0d4a9ba4647c15c7b88a781969682ee9aaa360"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260606.parquet",
+        "present": true,
+        "rows": 21388,
+        "sha256": "b577cff2a3f849a110edd0c161dd8ed1f78379fd96844dfeed8746c055c46000"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260607",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260607.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "b4bbede443d9b3e11cee54ebe9021abc7202ee86a88f0313ae1557d93f3c5528"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260607.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "536019f0b1febd4396b4b20eb996653af443b58fbceb0c30c362dee2e58093a2"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260607.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "1f35c9bfe62eedaa4f956b2241d42ca57bde81377fbe8df195324bbf7a7b8d24"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260607.parquet",
+        "present": true,
+        "rows": 12016,
+        "sha256": "c9af0d0c41efa6b1fbb42bbce5ce174372dfb6974ff372e0f21878803fb20af7"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260608",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260608.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "e146228a81ae5d23f7e9b5e1f7b0210fa17d6be5da403e9454219574cc0e1235"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260608.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "26839c9b6c3ca9ba50ce72120831edee4649bb64b5fb2ee48fb732bf9f1189d5"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260608.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "12207a8e6746a55195c82fb1bf66e4d094f91ff68b0b0e3c38dc80c8f7af65bf"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260608.parquet",
+        "present": true,
+        "rows": 25610,
+        "sha256": "8757c19dcec2dedb9ecdb4a861ba634fc7ab63bb9870f0873a0be021f4a9cc81"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260609",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260609.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "797648715c94931a1de805b776c7cf2fa4d38037cf0522690b7974464be1a716"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260609.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "078b3cc6c5477fc7d42f7736a7fdae51899288eb4d3fc0d62ed6af687b20ee88"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260609.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "5402dd483858bae405360e7faa899c9da322f51202ed694c20b6f106070b5239"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260609.parquet",
+        "present": true,
+        "rows": 37562,
+        "sha256": "cdab2e75929d08cdb6ef71c3abf1b296f6cdbd13ace84ee4019c46a5a463b366"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260610",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260610.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "d183d37f60e20170d761d8f87e5b46e425996f6c3c757e274b7d0c39248742b3"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260610.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "f092cea0975b2b71add76758f0b0b284f1cc26dadd01cf4e8e1125bba6744e37"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260610.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "5c9d587699c216ebb90ecc9c9242ad8c7713fa95375a03fb9337a913d8483cbb"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260610.parquet",
+        "present": true,
+        "rows": 17920,
+        "sha256": "59305a8eec7b2a7d922011982883aa11e3a37562d924feff6bb797e938e86e6c"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260611",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260611.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "dba0f77a70cd51afc0021e459ec6c040c3a1e8e4bb169b9254f3b791d4b40859"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260611.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "80094d193fa66d9665974284a420990eb406782096926e69289dcd76f9daa419"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260611.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "8c0f920fc8569b981784e7c0b9b870a688152e42d86ade08e5669df3b54e6f83"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260611.parquet",
+        "present": true,
+        "rows": 13668,
+        "sha256": "70dafde937ca96c2a3b02ce0d8cd7d6771f7b204d1948a445725ce23e50c59c3"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260612",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260612.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "314e529262c5564db8f1c8e3c846afdc29f04b275729552fe8ad427211c66f06"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260612.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "4dd0271719d5cb8db8608fbb800b5d2d8763eab7049ae93072faa3771af5fa7c"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260612.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "f38430b0bdc91609e9b45f54774222b032ae84d88794aa1ee272d535c2aadcdb"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260612.parquet",
+        "present": true,
+        "rows": 7132,
+        "sha256": "548d452a79390a00dd55fff834de8d10592e832c7d9bd38e682f1d76c3e96ce5"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260613",
+      "evaluated_rows": 4642,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260613.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "e306380396efdecddcd2c4dfdf9bb0b0869c3de56c211ca911337d6f1de486d2"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260613.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "bd22a94ca83f1a7ec4a33ed71a4a23046158ff8fb4fcce5b6725ab5784590f37"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260613.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "effc03831bede01cd0d9f77845fe7296b454deddbec5eb7643dc4d357229b367"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260613.parquet",
+        "present": true,
+        "rows": 4642,
+        "sha256": "3d422d8065cd07ad1b9bec02c3d43707d010776d4d862c076c1dacff41ce03da"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260614",
+      "evaluated_rows": 4678,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260614.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "f3f8fa772d4aa106a6babe3bc506d79881dad668436168ca8133c5167fe89ab8"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260614.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "b2bbbaf87031f139754cf99d7c1a0f2a61cfd26fbee3071eb81db924bd3ecc78"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260614.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "dea4c6d7ddbf7adad1f646cd1c4a8d20eb5460b88289ae9708735b079e9ce142"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260614.parquet",
+        "present": true,
+        "rows": 4678,
+        "sha256": "a58702de52c999368ca2315fb8e1356a7340dcb3afb89b725fe9b6374f1a2f5d"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260615",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260615.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "ec5abdcb973d5f0dd9b56ff247c9e616d3fc4dd64f25bbb54007fda85945e32c"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260615.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "47ffe8b456f74da42696f2ddc468e4dc64e5f00c3b4de76d9978b241a1c131a4"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260615.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "365b90a378a9e390162b844ec5a3d2908153c1d775dfc6f51a7e2e0350d957d0"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260615.parquet",
+        "present": true,
+        "rows": 10198,
+        "sha256": "6f1e294a63174f69f161e541909db5feaac7be04347e35e2e079d664a76df17a"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260616",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260616.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "213bf449b6a17d155e27e27c51d3ddab52cd63c64c1c15d837bd62e641c460d2"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260616.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "5698a0fc9a4f921e0ffa41bee113cb968579ed8f6d26b9eeb764b0ba603e4220"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260616.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "0155c9d596701c2ac8cc251dca432b99fc7f044ba2ac0cc4e838c57eb57f1a89"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260616.parquet",
+        "present": true,
+        "rows": 12062,
+        "sha256": "f49f2debf1e535cddb4542ae65ec0c0acdd686ba68e3e9a05b1e4515a083c76d"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260617",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260617.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "f639b37bcd4959a6fcb97732b8b993b80a89ee907525ff736b3a10974f2c09c0"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260617.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "2128174a752b26af15435c5b60bae4d50fb5711379a10799b528359a7989ff79"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260617.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "8d65d7e3378ef071872c740c3703d369a38524d7426086f7824e1ecdbf8d3783"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260617.parquet",
+        "present": true,
+        "rows": 7792,
+        "sha256": "415b13d28b3526796891b2ebc95d594bad28b8bf9dfaff40b447b2966aaeccc3"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260618",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260618.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "95242b89c4be59b954b8750e58169e0a6a7110c6c6daf6b6d68c320d2b5309a9"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260618.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "1de834b230c8a4b5de686a2e05bd25589b64a88fbece1c4b02aff0f7f66c2f99"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260618.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "d36187f302551a9081703d927ae3fdb4a1f72374cdbf4e2d734dcd92352b1dc7"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260618.parquet",
+        "present": true,
+        "rows": 11738,
+        "sha256": "6b0026b13e26b5d5f26892b45b4dbda53a73c2e4956c4501517a1f6db254cfac"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260619",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260619.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "c648bce3b6856986c7974f95c3001d8b1a38b6d5a1b7461e8fafa04a97d86176"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260619.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "ac0923e37ea25da3b72dff186e6f6dc6d0146980e184c6262fd1e0f073d96cc0"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260619.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "beece673811b825442df80259eb2db826de92d1c799f13a6a10149b2157dc302"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260619.parquet",
+        "present": true,
+        "rows": 9696,
+        "sha256": "e7c6a14904221e7dee1b2cc386df4646bb9f1c5eb6218007d4d2d3e9fc3a5e8a"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260620",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260620.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "4cd03c23e1c8c5b161adbce2cf3c34d4d770f45697acdfbb63f05109fcb78bda"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260620.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "c81b6ce1319d554488ddc3e0d3a48911d768768d188c00dcfc2bedbd45b85b44"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260620.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "4c3c49be647af914dd41c318a947d76fe7aa07be8de981bf132930b89e863143"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260620.parquet",
+        "present": true,
+        "rows": 9126,
+        "sha256": "aa16213fb19e7d71a73a3e36e71b017f21ec1da3e5b91aba775510c06d1e6386"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260621",
+      "evaluated_rows": 4954,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260621.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "403f11241c1c5df94d96011fab6fc6e1802d1a1acd4c13a603b5c51675e455e4"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260621.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "13d3fda66c69d72d16b134a3528c34b433633d3acff9ec1d98f87ec0ab1b30ab"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260621.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "0038c76eb17c607f3acd18777e4981ddaac98a53b2ccf7bff8b6eb2c7010a462"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260621.parquet",
+        "present": true,
+        "rows": 4954,
+        "sha256": "205dfb489727e56969e020eb6dcc123a0dfa604ec9809a63652aab25080cc147"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260622",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260622.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "ab3b3b2c1c04501a758d49837c59230683507f29715bd13d4b72a1ae5778075e"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260622.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "38119a7e4ab797ca6a95d6ed97433e2115da34c06782dccd5547dca751b5c08f"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260622.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "583eb08f036febbb699bdaaf8c2411f9d8e7311576e8e4904c4908e67ceca17a"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260622.parquet",
+        "present": true,
+        "rows": 15016,
+        "sha256": "01d0219e7ef80ec91ba397aed5996eabd56329435c94733a828ea0ec7b2bcdf7"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260623",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260623.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "3d8d8922cb803e003a13aa93de0f433b7a9e6f5c9bd4efc8f41b887406fb11d1"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260623.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "9a69ef695de4e4b6ac255f168022b0326cbb29685ce8b4d68179877a1c4a9e09"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260623.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "ad647fd7b736f0d468ac40bceb09324a368eef95cb4c640d7085cf2c9adcee2d"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260623.parquet",
+        "present": true,
+        "rows": 8900,
+        "sha256": "a0d9d82f26a9e1112e3c9d402566424aaded7529e46af0a112ac38cfbacd1d30"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260624",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260624.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "ac9dbee54b9730a6447f1de56ebde64fe979318ca73f5b94b63cf0f962e56fcf"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260624.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "e42829068d3c4bc11e8c16d121f261d99e95410049637c254892891cc31a4047"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260624.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "5b45f04079823a389c6e3feca6b89523636a79df50b81780fbc2c0b8439a6670"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260624.parquet",
+        "present": true,
+        "rows": 6352,
+        "sha256": "d5ca3ebadcab99d20eb368bdafe25954fc8d64b1922ba9030f55d4951fcdb25f"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260625",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\ETH\\ETH-20260625.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "a3755f1f2f9a5e613e267a6599255faa53130bb7152ca7da0a0c2a0a4054b8b6"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260625.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "31497f6917ab07ecc2eb0465473f92c6f0ee0e7381d445310796513ef9e69941"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\ETH\\ETH-20260625.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "1a7d7d45b4479394854953a68297f708f691dcbcffc5d6747aa567653ea25f84"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\ETH\\ETH-markout-20260625.parquet",
+        "present": true,
+        "rows": 10078,
+        "sha256": "83e8c57d3bb9128ad8f19f54e76c1e0cc40d9c4e219dcf100ee9d7944c573690"
+      },
+      "symbol": "ETH-PERP"
+    },
+    {
+      "date": "20260527",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260527.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "62ba021ce544acec3fbce68db22bd9d4f16a257d77347d0f31342ac0c822b0e0"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260527.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "5267aaf5e9c63857e14913b6e7ce493457237bda1594b5465adef2ca86197774"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260527.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "aa9c6bceb7c8ee9386bbc63845817c4de33b56e6e507cbc8d5b2b4ac214c2603"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260527.parquet",
+        "present": true,
+        "rows": 11528,
+        "sha256": "c8d2568bbaf89cc08f854dd3fd29e3f6c87a03f042cf1950eda5002b512cf023"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260528",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260528.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "cc1468b7456fe48771a6b9800830465b2342f61bfc517794858e154b29535512"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260528.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "555205223f5b9fee074296f123da40e3d9ad8bbdcfad721369b67abd458fcc8a"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260528.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "25d890e17d8189251f98de252ad9f97039e437f14eea05a6deb853910a4fa227"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260528.parquet",
+        "present": true,
+        "rows": 21364,
+        "sha256": "6e4c3b774520f85f66d15de2a407caecbc28c2f62a8a504b67b9968608b57704"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260529",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260529.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "0622ba00b4fc6e20668bf0f3070d8d0cba7d1915317b3ecee2545cab54dad024"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260529.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "157264cad738bbaad2e55963d81efd7a65086dfcb4dd75f22f707e661d6eebc1"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260529.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "0f1af7517f69626254baac1bd32661c642058d0a146e8a8d267d3686b9ae5e19"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260529.parquet",
+        "present": true,
+        "rows": 21584,
+        "sha256": "d4a278657a9d3329321896ee382bd2353c5fb4b0dd570967615de87503af47d3"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260530",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260530.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "dda3e9eb6f661fb5d90553c4372accc1a76b920fdcd01b1ba5a3cb72ef43d117"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260530.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "fb79c3359f5524740b99c693634dae633d99060cf599221a2f8b9f532fbf4b84"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260530.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "c21086b5ae6406ff4062e2d126dd0193df3a0ff64a90d76b0e3ca3a589a197c9"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260530.parquet",
+        "present": true,
+        "rows": 15238,
+        "sha256": "5c26cf3f2b1108f39399a0fe9f74fbcd80c96f26d2eabf01b41a4719434d6014"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260531",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260531.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "c5fc006200e818c023718e7c3e652fd0e0f9d2df7343242876f85af33e83acc4"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260531.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "a0bce9a55dc3bf5230078a06e445ed7f95ed3fae03d8ef4d8636c923f31f7780"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260531.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "adb223f8cb8a12dd65223182d96456eb5a67754190a5aee5616c561463d347ab"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260531.parquet",
+        "present": true,
+        "rows": 17456,
+        "sha256": "6bdaccdb25d40e01819a436b87e2d823df3335fc304422e9cfd367512dc4d268"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260601",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260601.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "15fd83a68cec5397369f76a3ae04beff19844d3d805d3b9bf57b396dac03338f"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260601.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "4036a6d697686dc6ae8bd222e0362f24a85e5ee3ba39a33a6f8761cdc9059a83"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260601.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "fa1bfc6bf558bcd0f208c7df8a244dbdd2686173d46d44edf3e3611775e5ceae"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260601.parquet",
+        "present": true,
+        "rows": 37446,
+        "sha256": "1a4917eb36c4de42db701abb2beb764ceace71809d5a781c6605b9ae0410693d"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260602",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260602.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "9393ee2be15132dc9ab59675be0023710be78faaeca75fd073ef577825a78133"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260602.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "7cc38e3f3169218a35410e2645ca780f5b6b4d2a46a445ab1e72dc8a5bdc7ad9"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260602.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "971f22d6e36149bc70a089d38249ccfa4133a1c75ffd2daeabe0dc0c6fbab3a7"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260602.parquet",
+        "present": true,
+        "rows": 28574,
+        "sha256": "0759fba815e6631ab3ab602b54fbcf6a44092eb8cd71d412da97474e7acd7b64"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260603",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260603.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "c3048653691d72fb54f47db480f7c9d4ded33cd27e9937b366d1dca4c3841aea"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260603.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "4efe50a26f3e8506bbe1ede2a136d52c731ce7e24cb44dfcba4d31e4bf4837a3"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260603.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "bd1328dee3f9925bc7caedc86b9a431534edeebf208784689a120c4131e4d255"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260603.parquet",
+        "present": true,
+        "rows": 61874,
+        "sha256": "47ccb3631495a8440ddd0cec43f8b98d4cdd944f9a48d67c560e47c40f28b4ee"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260604",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260604.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "f4e0b0343e98b389b461555a8f4feffdd3c760f7cc02d664f34ad02c214bfcf9"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260604.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "acae82aef974cfa9ddffff0b97a782fb134d495167e775e0aec5697a74a2b891"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260604.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "7547e56fe3006460ebae3fcdd818d96aa34ff921b7513cf0bfc6c1eae9984248"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260604.parquet",
+        "present": true,
+        "rows": 162036,
+        "sha256": "548f7ec1d3cc2500fd5170602f267973e495fb83ca4679e07aa2274dd0433af6"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260605",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260605.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "a1316741dbcce04d80ac037a5fb12115179b4c607291b03dbba4650b62814b45"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260605.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "96f2def8870a38b8e15cb38e385a5f7fd5bc94b6b82fb55aa8371e34a1bf946e"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260605.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "5b6617bc1b2617bfd385cbdb8b78f29b2a6e1cab393b081c59acfe1ffd9db577"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260605.parquet",
+        "present": true,
+        "rows": 55622,
+        "sha256": "2543875bc61da8c661eae33f2029a4c79fece7cd79b34028ba112c21729bbf7e"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260606",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260606.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "8a9af8a9932b4ba7dfc8da31e871f4ca0b8a606f38651d564f34ca3cfb48bb4a"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260606.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "673bf54879dd13d58ee3201344eefc8135df89b0783eecfc92ce9335917b89fe"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260606.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "51dc8c775d447cfffe75477d7d9c6edee93885dc99fceedbbb3c5a4a0a9330b9"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260606.parquet",
+        "present": true,
+        "rows": 62982,
+        "sha256": "db7c1bb6eb1ffe4336a70123e1fcc996bc8529ecc83afd6ac1fd3fa6957def20"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260607",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260607.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "e531a4068393f8707df98b688cf182741a87ac9d2b32f0057d5c09f9de1d030a"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260607.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "536019f0b1febd4396b4b20eb996653af443b58fbceb0c30c362dee2e58093a2"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260607.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "069ab2689ff89bcc3fd2312b0dbc3538009cb7dda722867cb5080ab30fcc43e4"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260607.parquet",
+        "present": true,
+        "rows": 31634,
+        "sha256": "5b74438092b0a8a7ee98a008aae13c48720ce01ef46cbb7103e9d0edec89f89c"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260608",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260608.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "2c39cee33255b7e8d327ad10526ed39455b53f58754e2ab0ba3b491b311ceaca"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260608.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "26839c9b6c3ca9ba50ce72120831edee4649bb64b5fb2ee48fb732bf9f1189d5"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260608.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "048927b6ab69e177429ef51a3b94617e81d6632bfb86fcbb2b100af74a7c7f0d"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260608.parquet",
+        "present": true,
+        "rows": 55296,
+        "sha256": "d382655a4c7aea35e0cf32bfddcbe6240e2a35dba9ea4b75d74f3e82fe145e64"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260609",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260609.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "d7e7213095582ac5a58033bc6b45af2c5f9f5df241f3b55a478eb3b27fb8f28b"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260609.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "078b3cc6c5477fc7d42f7736a7fdae51899288eb4d3fc0d62ed6af687b20ee88"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260609.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "0860c573ec07451f6f8e25a87821f507ba82914f2e74810937289b47a8d81310"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260609.parquet",
+        "present": true,
+        "rows": 54578,
+        "sha256": "b361032f943ace52730509124e1717f1d3a621aef1e1cdbd0e310cc87659e34c"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260610",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260610.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "3efbf234a26e7fbffc395d2c5659fea9ae1eed5ab406cf111d6fb1413b613cc7"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260610.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "f092cea0975b2b71add76758f0b0b284f1cc26dadd01cf4e8e1125bba6744e37"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260610.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "db4698c65da719144cea95d11f41e57b6f601674bd73f2191d0c05ba29f0b667"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260610.parquet",
+        "present": true,
+        "rows": 34396,
+        "sha256": "a85314a578dee94044c8d3da35d1bb03ed48a4b087c8029ca17ff9a70fb14bd2"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260611",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260611.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "d96a19a4a0a93c2653f7779e4418311975e43b0fd8dc6631cecf8ec382a21a9d"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260611.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "80094d193fa66d9665974284a420990eb406782096926e69289dcd76f9daa419"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260611.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "0632e25d391ebd842005da8ed530bb4c1d617b28e4eab86a29df7b21ae9a88f8"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260611.parquet",
+        "present": true,
+        "rows": 39564,
+        "sha256": "cdcd355efa5b549300f474d3340244cb9cc156631a69325c21902f7b378869b9"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260612",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260612.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "a0aa1b70ca4595306144885a8cad7a6620f70adf863067a3b5044add500ab1f2"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260612.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "4dd0271719d5cb8db8608fbb800b5d2d8763eab7049ae93072faa3771af5fa7c"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260612.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "f35cb0c15202f0ee870538932c88f250637887c3538a9d05da7388b9905310df"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260612.parquet",
+        "present": true,
+        "rows": 29208,
+        "sha256": "7481a383918b4e0ae5bba4c273511d85c86b17eb4c3194a039818a8b3dead256"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260613",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260613.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "b080bd970e26350e97192d8c1971aec2e7470baae83eeff217d449809b649d0b"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260613.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "bd22a94ca83f1a7ec4a33ed71a4a23046158ff8fb4fcce5b6725ab5784590f37"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260613.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "b9712af6075fe3462ef9dd8daf69ee3676c64b4515b39f28fa0d453d7ca45031"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260613.parquet",
+        "present": true,
+        "rows": 17230,
+        "sha256": "bdcae7873a78546d00f80a664bc589041ff4dde4bf9ddc98a31507f82b8e2bd6"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260614",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260614.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "ce32de5b488e572db00273c7b2a64e583cb0d210f109f7bcf9ecec282d02503e"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260614.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "b2bbbaf87031f139754cf99d7c1a0f2a61cfd26fbee3071eb81db924bd3ecc78"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260614.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "19cfacd6f886f9281dfc8573471234b1a663b3c38b98fc72b4fd9c7dc3cb2e05"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260614.parquet",
+        "present": true,
+        "rows": 18028,
+        "sha256": "666fd53f902b621f98df7c37eb125d2f3f90125cc136ed6357ae93628ee36b53"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260615",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260615.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "ffcc2e4f9d924ae4552a85c71e41c2cbe2812578788041ad65c9da7c1556ee59"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260615.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "47ffe8b456f74da42696f2ddc468e4dc64e5f00c3b4de76d9978b241a1c131a4"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260615.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "95a44a59ee670e4ce26f74db4acaab0a9f5e176051578379650a1a4f5b8b5177"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260615.parquet",
+        "present": true,
+        "rows": 43644,
+        "sha256": "541dbe4227b6ec298a701b6677bb0b8e2e25720678980798975037f3cb8f07d2"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260616",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260616.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "987c17a44571d3bf4592eb3f2947e28c3cb03f9369cc2d97f77f7b4fdac07a1d"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260616.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "5698a0fc9a4f921e0ffa41bee113cb968579ed8f6d26b9eeb764b0ba603e4220"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260616.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "3570971aa01da9ecb9fa9a7e048a662a3edabefec188fde6f5381ad81a67961a"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260616.parquet",
+        "present": true,
+        "rows": 25326,
+        "sha256": "6e21b1c142970b609e356ef126e943e4bc3288aa1d7fee31ddbce18baedf5f83"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260617",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260617.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "265bea95ff49d36f2c35dd2f5fa3cf482172ac5883993788388861a38facec87"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260617.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "2128174a752b26af15435c5b60bae4d50fb5711379a10799b528359a7989ff79"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260617.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "86655a09ae879b6f26fe45d049a61faa8936d4eea2acf54f4dff4e6c556b48de"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260617.parquet",
+        "present": true,
+        "rows": 17222,
+        "sha256": "5baa5e5e5ed8fdadb73301a22814068af3d7a130c8f13b6fb2c0ef4860977d44"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260618",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260618.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "5d16dd4493e34540b014d571acb872e327924d9628691287814662f39ff616c1"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260618.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "1de834b230c8a4b5de686a2e05bd25589b64a88fbece1c4b02aff0f7f66c2f99"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260618.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "38e18656e910fc8bb4a3b45978816a06487515b56179ef3fe97539cec2ecbb1f"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260618.parquet",
+        "present": true,
+        "rows": 27896,
+        "sha256": "f1c75eb5ff6ccfcf10ee221db396cb46db464b81a974d4371ebfd531dd8e646c"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260619",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260619.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "9327e89c7a7a356c8c3f19ebeba9c7695d1c618afac12e8d3c348e27cae91b54"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260619.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "ac0923e37ea25da3b72dff186e6f6dc6d0146980e184c6262fd1e0f073d96cc0"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260619.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "c7f6a701bb34ce4a735ead93b0a96f939bab7988a3083c7589482f103a3f1ba4"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260619.parquet",
+        "present": true,
+        "rows": 22666,
+        "sha256": "aa6f86f10cb3a064a0309cb723ea771122d5673f88d349ee8b342ff09bc1687c"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260620",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260620.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "8fe84be3a8e83d6e4ef40060c2be2a3db23e40f2a7f79c20f61c33938fba7e9d"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260620.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "c81b6ce1319d554488ddc3e0d3a48911d768768d188c00dcfc2bedbd45b85b44"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260620.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "afe870c4932ebcb82a672f4d7c49b9d9eb814c90608560ae9248fa4bf4ac43ca"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260620.parquet",
+        "present": true,
+        "rows": 24286,
+        "sha256": "37218fe915b9e18acd4326a99f3a9589173c9113bcb5009f1fd3a9022279c9a6"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260621",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260621.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "19714b19fad3bf68f615733704eee733640442472d92bf87ee62435b369ad940"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260621.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "13d3fda66c69d72d16b134a3528c34b433633d3acff9ec1d98f87ec0ab1b30ab"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260621.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "e83447abc8268c7843913f4a86e95f1721bfef8faa2c40d85fb9255188cd3a30"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260621.parquet",
+        "present": true,
+        "rows": 15176,
+        "sha256": "335a2f78240e2eeaec09aa4d00af0ee5c94a821cd637624d24a6cee47d398c85"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260622",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260622.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "67fea81448139948e0d17582d8ad087f53d0bdf188ebb745a322479f06d5cd9b"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260622.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "38119a7e4ab797ca6a95d6ed97433e2115da34c06782dccd5547dca751b5c08f"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260622.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "f79b1d7103b6f2e70a55623cfc3eab666903f3c389d53a02c01fca00a78d75a7"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260622.parquet",
+        "present": true,
+        "rows": 43336,
+        "sha256": "63c052a34afd13f9dcef048efa8cd93c6d38ae3095f52367ed82c8763d35981f"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260623",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260623.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "c311c599d9786ca67b3d219646f271a1e92fcca4722d4e068087e84ff9628ab5"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260623.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "9a69ef695de4e4b6ac255f168022b0326cbb29685ce8b4d68179877a1c4a9e09"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260623.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "46a6066d6e952b68848647c07181d77beefc653d1cbbbe3de50c63641db2512c"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260623.parquet",
+        "present": true,
+        "rows": 26156,
+        "sha256": "7433a7932d44d50a3d672d4ccc5015ae06dec8296bb09f545a4f5532ca40004e"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260624",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260624.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "02239a3c2338f16dcf88881b28463565902c53218f3b664109559aa1256e7cab"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260624.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "e42829068d3c4bc11e8c16d121f261d99e95410049637c254892891cc31a4047"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260624.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "4a350db7bb0d4f98617b28d8c197844ab9837b0ac80bf1b57e74539f11101b62"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260624.parquet",
+        "present": true,
+        "rows": 32168,
+        "sha256": "5fb6730aad4375ea03178e14ba07a7508ba40114e7df3a9d59b9cb10739fb214"
+      },
+      "symbol": "BTC-PERP"
+    },
+    {
+      "date": "20260625",
+      "evaluated_rows": 5000,
+      "fills": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\fills\\BTC\\BTC-20260625.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "64c53ca61b3b427fca72276d7bd800f85ca5202bce30b3999e31d7b2be6a57d3"
+      },
+      "funding": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\asset_ctxs\\asset-ctxs-20260625.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "31497f6917ab07ecc2eb0465473f92c6f0ee0e7381d445310796513ef9e69941"
+      },
+      "l2_book": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\silver\\hyperliquid\\l2_book\\BTC\\BTC-20260625.parquet",
+        "present": true,
+        "rows": null,
+        "sha256": "448a7e881907a12973dec2471d89c0886ef9c04d5196569400aa8f0142f06309"
+      },
+      "markout": {
+        "path": "C:\\MarketImmune\\data\\hyperliquid\\gold\\hyperliquid\\markout\\BTC\\BTC-markout-20260625.parquet",
+        "present": true,
+        "rows": 33354,
+        "sha256": "e85279b7f489bf1e36ac68cbfd580e51f4e2a333d0b94d3bfa76ec5a62b99ec0"
+      },
+      "symbol": "BTC-PERP"
+    }
+  ],
+  "schema_version": "1.0.0"
+}

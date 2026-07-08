@@ -16,24 +16,26 @@ NOW = datetime(2026, 1, 1, tzinfo=UTC)
 
 def write_silver_fills(root: Path) -> None:
     layout = HyperliquidLakeLayout(root)
-    write_parquet_records(
-        layout.silver_fills_path("SOL", "20260101"),
-        [
-            {
-                "coin": "SOL",
-                "ts_ms": int((NOW + timedelta(seconds=index * 20)).timestamp() * 1000),
-                "px": 100.0 + index,
-                "sz": 1.0,
-                "side": "B" if index % 2 == 0 else "A",
-                "crossed": False,
-                "maker_side": 1 if index % 2 == 0 else -1,
-                "fee": 0.01,
-                "fee_token": "USDC",
-                "tid": index,
-            }
-            for index in range(3)
-        ],
-    )
+    rows = [
+        {
+            "coin": "SOL",
+            "ts_ms": int((NOW + timedelta(seconds=index * 20)).timestamp() * 1000),
+            "px": 100.0 + index,
+            "sz": 1.0,
+            "side": "B" if index % 2 == 0 else "A",
+            "crossed": False,
+            "maker_side": 1 if index % 2 == 0 else -1,
+            "fee": 0.01,
+            "fee_token": "USDC",
+            "tid": index,
+            "oid": index,
+            "markout_bps_10s": float(index - 1),
+            "toxic_10s": index < 1,
+        }
+        for index in range(3)
+    ]
+    write_parquet_records(layout.silver_fills_path("SOL", "20260101"), rows)
+    write_parquet_records(layout.gold_markout_path("SOL", "20260101"), rows)
 
 
 def test_hyperliquid_adapter_streams_fill_events(tmp_path: Path) -> None:
@@ -72,6 +74,12 @@ def test_run_hindsight_writes_schema_valid_outputs(tmp_path: Path) -> None:
     assert payload["event_types"] == {"hyperliquid_fill": 3}
     assert payload["manifest"]["run_id"] == manifest["run_id"]
     assert artifacts.markdown_path.read_text(encoding="utf-8").startswith("# Hindsight")
+    assert artifacts.report_json_path is not None
+    assert artifacts.tearsheet_path is not None
+    report = json.loads(artifacts.report_json_path.read_text(encoding="utf-8"))
+    assert report["meta"]["report_schema"] == 2
+    assert report["sample_data"]["rows"] == 3
+    assert artifacts.tearsheet_path.exists()
 
 
 def test_run_hindsight_fails_loudly_when_no_market_events_load(tmp_path: Path) -> None:
@@ -94,3 +102,5 @@ def test_cli_run_command_uses_hyperliquid_defaults(tmp_path: Path) -> None:
 
     assert exit_code == 0
     assert (out / "hindsight-report.json").exists()
+    assert (out / "report.json").exists()
+    assert (out / "tearsheet.html").exists()

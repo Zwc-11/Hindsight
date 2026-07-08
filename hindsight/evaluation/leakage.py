@@ -163,6 +163,59 @@ def probe_lookahead_perturbation(
     )
 
 
+def probe_survivorship(
+    *,
+    full_universe: tuple[str, ...],
+    evaluated_universe: tuple[str, ...],
+) -> tuple[LeakageViolation, ...]:
+    """Flag symbols present at the start that were dropped from evaluation.
+
+    Restricting the universe to instruments that survived to the end of the
+    sample is survivorship bias: the delisted or blown-up names silently vanish
+    and inflate the measured edge.
+    """
+    ordered = tuple(dict.fromkeys(full_universe))
+    kept = set(evaluated_universe)
+    dropped = tuple(index for index, symbol in enumerate(ordered) if symbol not in kept)
+    if not dropped:
+        return ()
+    names = ", ".join(ordered[index] for index in dropped)
+    return (
+        LeakageViolation(
+            probe="survivorship",
+            severity="hard",
+            message=f"evaluated universe drops symbols present at start: {names}",
+            indices=dropped,
+        ),
+    )
+
+
+def probe_zero_cost_execution(
+    *,
+    maker_fee_bps: float,
+    taker_fee_bps: float,
+    slippage_impact_bps: float,
+) -> tuple[LeakageViolation, ...]:
+    """Flag free-lunch execution: zero fees and zero slippage at once.
+
+    A backtest that pays no fees and crosses no spread books a costless fill that
+    no real account ever gets, which can turn a losing strategy into a winner.
+    """
+    values = (maker_fee_bps, taker_fee_bps, slippage_impact_bps)
+    if any(value < 0 for value in values):
+        raise ValueError("execution cost inputs cannot be negative")
+    if sum(values) > 0:
+        return ()
+    return (
+        LeakageViolation(
+            probe="zero_cost_execution",
+            severity="hard",
+            message="execution charges zero fees and zero slippage (free lunch)",
+            indices=tuple(range(len(values))),
+        ),
+    )
+
+
 def _normalize_name(value: str) -> str:
     return value.strip().lower()
 

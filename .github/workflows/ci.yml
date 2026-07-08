@@ -43,6 +43,12 @@ jobs:
           python -m hindsight.cli run --output-dir /tmp/hindsight-run
           python -m hindsight.cli benchmark --output-dir /tmp/hindsight-benchmark
           python -m hindsight.cli demo --output-dir /tmp/hindsight-demo
+          python -m hindsight.cli pages --output-dir /tmp/hindsight-pages
+          test -f /tmp/hindsight-pages/index.html
+          test -f /tmp/hindsight-pages/demo/tearsheet.html
+
+      - name: Falsification suite
+        run: python -m hindsight.cli falsify --output-dir /tmp/hindsight-falsify
 
       - name: Demo determinism
         run: |
@@ -54,8 +60,22 @@ jobs:
 
           first = json.loads(Path("/tmp/hindsight-demo-a/manifest.json").read_text())
           second = json.loads(Path("/tmp/hindsight-demo-b/manifest.json").read_text())
+          first_report = json.loads(Path("/tmp/hindsight-demo-a/report.json").read_text())
+          second_report = json.loads(Path("/tmp/hindsight-demo-b/report.json").read_text())
           assert first["run_id"] == second["run_id"]
           assert first["data_content_hash"] == second["data_content_hash"]
+          assert (
+              first_report["provenance"]["report_self_hash"]
+              == second_report["provenance"]["report_self_hash"]
+          )
+          assert (
+              Path("/tmp/hindsight-demo-a/report.json").read_bytes()
+              == Path("/tmp/hindsight-demo-b/report.json").read_bytes()
+          )
+          assert (
+              Path("/tmp/hindsight-demo-a/tearsheet.html").read_bytes()
+              == Path("/tmp/hindsight-demo-b/tearsheet.html").read_bytes()
+          )
           PY
 
   catboost-extra:

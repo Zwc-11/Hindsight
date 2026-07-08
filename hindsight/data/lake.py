@@ -51,6 +51,17 @@ class HyperliquidLakeLayout:
     def silver_asset_ctxs_path(self, date: str) -> Path:
         return self.root / "silver" / "hyperliquid" / "asset_ctxs" / f"asset-ctxs-{date}.parquet"
 
+    def silver_funding_path(self, coin: str, date: str) -> Path:
+        symbol = _coin_dir(coin)
+        return (
+            self.root
+            / "silver"
+            / "hyperliquid"
+            / "funding"
+            / symbol
+            / f"{symbol}-funding-{date}.parquet"
+        )
+
     def silver_candles_path(self, coin: str, interval: str, date: str) -> Path:
         symbol = _coin_dir(coin)
         return (

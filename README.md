@@ -2,21 +2,26 @@
 
 [![ci](https://github.com/Zwc-11/Hindsight/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Zwc-11/Hindsight/actions/workflows/ci.yml)
 
-The backtester that catches you lying to yourself.
-
-Leakage-audited, point-in-time, reproducible evaluation for Hyperliquid
-microstructure strategies.
+Leakage-audited, point-in-time evaluation for Hyperliquid microstructure
+research.
 
 Hindsight is a Python backtesting and evaluation harness extracted from
 MarketImmune. It focuses on correctness of research evaluation: deterministic
 event replay, point-in-time feature access, purged walk-forward folds, leakage
 tripwires, execution-cost modeling, and reproducible run manifests.
 
+[![Hindsight flagship audit tearsheet](docs/assets/flagship-tearsheet.png)](https://zwc-11.github.io/Hindsight/benchmarks/2026-07-07-flagship/tearsheet.html)
+
+[View live flagship report](https://zwc-11.github.io/Hindsight/benchmarks/2026-07-07-flagship/tearsheet.html)
+· [Open report ledger](https://zwc-11.github.io/Hindsight/)
+
+Every number below links to a hash-stamped, CI-reproduced artifact.
+
 ![Actual Hindsight demo CLI output](docs/assets/hindsight-demo.gif)
 
-The capture above is generated from actual `python -m hindsight.cli demo`
-output. It uses the bundled synthetic sample data and shows the intended
-leakage-audit verdict.
+The capture above starts from actual `python -m hindsight.cli demo` output and
+ends on the generated tearsheet verdict. It uses the bundled synthetic sample
+data and shows the intended leakage-audit behavior.
 
 Hindsight is an evaluation harness, not an execution-research simulator. Fill
 model: market orders fill as takers at the touch when top-of-book is available
@@ -37,8 +42,11 @@ data labels live in
 python -m pip install -e ".[dev]"
 python -m pytest
 python -m hindsight.cli demo
+python -m hindsight.cli report reports/hindsight-demo
+python -m hindsight.cli falsify
 python -m hindsight.cli run
 python -m hindsight.cli benchmark
+python -m hindsight.cli pages --output-dir _site
 ```
 
 On PowerShell, the same starter demo is:
@@ -63,15 +71,25 @@ After installation, the console entry point is also available:
 hindsight run
 hindsight benchmark
 hindsight demo
+hindsight report reports/hindsight-demo
+hindsight falsify
+hindsight pages --output-dir _site
+hindsight flagship --coverage-only --dates 20260527..20260625
 ```
 
 The default commands use tiny synthetic sample lakes under
 `examples/sample_data/` and write generated reports under `reports/`.
 
-The flagship demo writes a JSON report, Markdown report, manifest, and two
-leaderboards. It first runs a deliberately unsafe random-split control where the
-leaky policy wins, then runs Hindsight's audit path and blocks that same leaky
-policy.
+The flagship demo writes a JSON summary, schema-v2 `report.json`, self-contained
+`tearsheet.html`, Markdown report, manifest, and two leaderboards. It first runs
+a deliberately unsafe random-split control where the leaky policy wins, then
+runs Hindsight's audit path and blocks that same leaky policy.
+
+For local real-data readiness, `hindsight flagship --coverage-only` audits a
+Hyperliquid lake for the Phase 0 target before any benchmark numbers are
+published. A full `hindsight flagship` run requires at least three symbols,
+thirty dates, recorded trades, top-of-book partitions, recorded funding or
+asset-context series, eight policy trials, and eight purged folds.
 
 Committed demo artifacts live in [examples/runs/demo](examples/runs/demo):
 
@@ -89,7 +107,8 @@ Committed demo artifacts live in [examples/runs/demo](examples/runs/demo):
 - `hindsight.execution`: costed replay simulator with fees, slippage, latency,
   funding, and participation caps.
 - `hindsight.strategy.baselines`: simple clean and intentionally leaky baselines.
-- `hindsight.reporting`: JSON, Markdown, leaderboard, manifest, and curve output.
+- `hindsight.reporting`: JSON, Markdown, HTML tearsheet, leaderboard, manifest,
+  and curve output.
 - `hindsight.data`: standalone parquet readers for the bundled samples and
   Hyperliquid markout lake layout.
 
@@ -119,7 +138,31 @@ Every run manifest includes:
 
 The committed demo manifest uses the Hyperliquid synthetic sample hash from
 `examples/sample_data/data_manifest.json`. CI runs the demo twice and checks that
-the two fresh manifests agree on `run_id` and `data_content_hash`.
+the two fresh manifests agree on `run_id` and `data_content_hash`, then byte-diffs
+the generated `report.json` and `tearsheet.html`.
+
+## Published Reports
+
+The static report archive is generated with:
+
+```powershell
+python -m hindsight.cli pages --output-dir _site
+```
+
+It publishes the synthetic demo tearsheet at `_site/demo/tearsheet.html`, copies
+committed benchmark artifacts under `_site/benchmarks/`, copies publishable
+schema-v2 report artifacts from `reports/`, and writes a sortable
+`_site/index.html` ledger over the available runs: date, symbol, source, policy
+count, top audited lift, DSR, PBO, fold-lift sparkline, verdict, and report
+hash. The Pages artifact contains committed reports and hashes only; raw market
+data is not copied.
+
+On `main`, [`.github/workflows/pages.yml`](.github/workflows/pages.yml) builds
+and deploys the same archive through GitHub Pages.
+
+Application line: built a point-in-time Hyperliquid ML evaluation harness with
+a 5/5 falsification suite and a live hash-stamped report:
+[zwc-11.github.io/Hindsight](https://zwc-11.github.io/Hindsight/).
 
 ## Benchmark Provenance
 
@@ -128,10 +171,11 @@ demo artifacts live in [examples/runs/demo](examples/runs/demo). Real or license
 benchmark artifacts belong in [docs/benchmarks](docs/benchmarks) and must record
 the producing command.
 
-The current real-data proof artifact is a local Hyperliquid SOL run:
-[docs/benchmarks/2026-07-02-local-hyperliquid-sol-20260527](docs/benchmarks/2026-07-02-local-hyperliquid-sol-20260527).
-It commits benchmark output and source-file hashes only; raw market data is not
-redistributed.
+The current real-data proof artifact is the local Hyperliquid Phase 0 flagship:
+[docs/benchmarks/2026-07-07-flagship](docs/benchmarks/2026-07-07-flagship).
+It covers BTC/ETH/SOL over thirty local lake dates and commits benchmark output,
+falsification output, report hashes, and source-file hashes only. Raw market data
+is not redistributed.
 
 ## Related Work
 
@@ -148,6 +192,8 @@ python -m mypy
 python -m coverage run -m pytest tests/hindsight -q
 python -m coverage report
 python -m hindsight.cli demo
+python -m hindsight.cli falsify
+python -m hindsight.cli pages --output-dir _site
 ```
 
 ## Docs

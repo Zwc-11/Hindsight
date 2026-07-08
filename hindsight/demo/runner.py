@@ -23,14 +23,17 @@ from hindsight.evaluation.benchmark import (
     maker_side_policy,
     quote_all_policy,
 )
+from hindsight.evaluation.falsification import falsification_payload, run_falsification
 from hindsight.evaluation.leakage import LeakageError
 from hindsight.evaluation.walk_forward import purged_walk_forward_folds
+from hindsight.reporting.html_report import write_html_report
 from hindsight.reporting.leaderboard import write_leaderboard_csv
 from hindsight.reporting.leakage_report import (
     quote_policy_leakage_payload,
     write_leakage_json,
 )
 from hindsight.reporting.manifest import RunManifest, current_git_sha
+from hindsight.reporting.report_v2 import build_report_v2, write_report_v2_json
 
 DEMO_WARNING = "deliberately unsafe control - do not use"
 
@@ -45,7 +48,37 @@ class DemoArtifacts:
     naive_csv_path: Path
     honest_csv_path: Path
     leakage_path: Path
+    report_json_path: Path
+    tearsheet_path: Path
     manifest: RunManifest
+
+
+# Disclosed cost model for the tearsheet (mirrors the CLI smoke ExecConfig).
+# Hyperliquid published base perps tier as of 2026-07-02: 1.5 bps maker,
+# 4.5 bps taker. Kept static so report.json is byte-deterministic across hosts.
+DEMO_COST_MODEL: dict[str, object] = {
+    "maker_fee_bps": 1.5,
+    "taker_fee_bps": 4.5,
+    "slippage_impact_bps": 0.5,
+    "latency_ms": 50,
+    "funding_rate_bps": 0.0,
+    "funding_interval_hours": 8,
+    "participation_cap": 0.1,
+    "liquidity_assumption": "maker",
+    "fee_tier_note": (
+        "Hyperliquid base perps tier (1.5/4.5 bps); real accounts may have tier "
+        "discounts or maker rebates."
+    ),
+}
+
+# Pinned requirements for the reproduce panel. Static (not read from the live
+# interpreter) so the report hashes identically on any machine.
+DEMO_PINNED_VERSIONS: dict[str, str] = {
+    "python": ">=3.12",
+    "hindsight": __version__,
+    "pydantic": ">=2.7",
+    "pyarrow": ">=15",
+}
 
 
 def run_demo(
@@ -144,16 +177,59 @@ def run_demo(
     json_path = output_dir / "demo.json"
     markdown_path = output_dir / "demo.md"
     manifest_path = output_dir / "manifest.json"
+    report_json_path = output_dir / "report.json"
+    tearsheet_path = output_dir / "tearsheet.html"
+
+    leakage_payload = quote_policy_leakage_payload(
+        policies=(baseline, clean_policy, leaky_policy),
+        target_name=target_name,
+    )
 
     write_leaderboard_csv(naive_csv_path, naive_result)
     write_leaderboard_csv(honest_csv_path, honest_result)
-    write_leakage_json(
-        leakage_path,
-        quote_policy_leakage_payload(
-            policies=(baseline, clean_policy, leaky_policy),
-            target_name=target_name,
-        ),
+    write_leakage_json(leakage_path, leakage_payload)
+
+    reproduce_command = (
+        "python -m hindsight.cli demo "
+        f"--symbol {symbol} --date {date} --limit {limit} "
+        f"--horizon {horizon} --seed {seed}"
     )
+    try:
+        falsification = falsification_payload(
+            run_falsification(
+                sample_root=sample_root,
+                symbol=symbol,
+                date=date,
+                horizon=horizon,
+                label_horizon_seconds=label_horizon_seconds,
+            )
+        )
+    except (FileNotFoundError, ValueError):
+        # Robustness: the falsification panel is a bonus; a lake too thin to run
+        # it must not break the primary demo report.
+        falsification = None
+    report_payload = build_report_v2(
+        sample_root=sample_root,
+        symbol=symbol,
+        date=date,
+        horizon=horizon,
+        data_label="synthetic",
+        records=records,
+        baseline_policy=baseline,
+        clean_policy=clean_policy,
+        leaky_policy=leaky_policy,
+        naive_result=naive_result,
+        honest_result=honest_result,
+        blocked_error=blocked_error,
+        leakage_payload=leakage_payload,
+        manifest=manifest,
+        cost_model=DEMO_COST_MODEL,
+        reproduce_command=reproduce_command,
+        pinned_versions=DEMO_PINNED_VERSIONS,
+        falsification=falsification,
+    )
+    write_report_v2_json(report_json_path, report_payload)
+    write_html_report(tearsheet_path, report_payload)
 
     payload = _demo_payload(
         sample_root=sample_root,
@@ -181,6 +257,8 @@ def run_demo(
         naive_csv_path=naive_csv_path,
         honest_csv_path=honest_csv_path,
         leakage_path=leakage_path,
+        report_json_path=report_json_path,
+        tearsheet_path=tearsheet_path,
         manifest=manifest,
     )
 
@@ -269,6 +347,8 @@ def _demo_payload(
             "naive_control_csv": _artifact_name(output_dir, naive_csv_path),
             "hindsight_clean_csv": _artifact_name(output_dir, honest_csv_path),
             "leakage_json": _artifact_name(output_dir, leakage_path),
+            "report_json": _artifact_name(output_dir, output_dir / "report.json"),
+            "tearsheet_html": _artifact_name(output_dir, output_dir / "tearsheet.html"),
         },
     }
 

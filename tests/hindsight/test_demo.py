@@ -63,6 +63,8 @@ def test_run_demo_writes_artifacts_and_blocks_leaky_policy(tmp_path: Path) -> No
     assert artifacts.naive_csv_path.exists()
     assert artifacts.honest_csv_path.exists()
     assert artifacts.manifest_path.exists()
+    assert artifacts.report_json_path.exists()
+    assert artifacts.tearsheet_path.exists()
 
 
 def test_demo_cli_writes_outputs(tmp_path: Path) -> None:
@@ -71,3 +73,5 @@ def test_demo_cli_writes_outputs(tmp_path: Path) -> None:
     assert (tmp_path / "demo.md").exists()
     assert (tmp_path / "manifest.json").exists()
     assert (tmp_path / "leakage.json").exists()
+    assert (tmp_path / "report.json").exists()
+    assert (tmp_path / "tearsheet.html").exists()
