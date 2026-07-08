@@ -54,19 +54,6 @@ jobs:
             "$API_URL/repos/$REPOSITORY/pages" || true)
 
           if [ "$status" = "200" ]; then
-            build_type=$(python - "$response" <<'PY'
-          import json
-          import sys
-
-          with open(sys.argv[1], encoding="utf-8") as handle:
-              print(json.load(handle).get("build_type") or "")
-          PY
-          )
-          else
-            build_type=""
-          fi
-
-          if [ "$status" = "200" ] && [ "$build_type" = "workflow" ]; then
             echo "ready=true" >> "$GITHUB_OUTPUT"
           else
             echo "ready=false" >> "$GITHUB_OUTPUT"
