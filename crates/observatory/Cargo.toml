@@ -1,0 +1,36 @@
+[package]
+name = "hindsight-observatory"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.90"
+license = "MIT"
+
+[dependencies]
+hindsight-economic = { path = "../economic" }
+axum = "0.8"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "net", "signal", "sync", "time"] }
+tower-http = { version = "0.6", features = ["fs", "limit", "trace"] }
+rusqlite = { version = "0.37", features = ["bundled", "backup"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+chrono = { version = "0.4", features = ["serde"] }
+sha2 = "0.10"
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "json", "rustls-tls"] }
+uuid = { version = "1", features = ["v4"] }
+clap = { version = "4", features = ["derive", "env"] }
+thiserror = "2"
+futures-util = "0.3"
+fs2 = "0.4"
+arrow-array = "56"
+arrow-schema = "56"
+parquet = { version = "56", default-features = false, features = ["arrow", "zstd"] }
+csv = "1"
+zip = { version = "4", default-features = false, features = ["deflate"] }
+flate2 = "1"
+scraper = "0.24"
+roxmltree = "0.20"
+
+[dev-dependencies]
+tempfile = "3"
+tower = { version = "0.5", features = ["util"] }
+http-body-util = "0.1"

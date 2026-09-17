@@ -114,8 +114,8 @@ def read_parquet_records(path: Path) -> list[dict[str, Any]]:
 
 
 def _write_table(path: Path, table: pa.Table) -> None:
-    pq.write_table(table, path, compression="zstd")  # type: ignore[no-untyped-call]
+    pq.write_table(table, path, compression="zstd")
 
 
 def _read_table(path: Path) -> pa.Table:
-    return pq.read_table(path)  # type: ignore[no-untyped-call]
+    return pq.read_table(path)

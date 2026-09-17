@@ -1,0 +1,15 @@
+export type Mode = 'observed' | 'reconstructed';
+export type Scope = {snapshot:number; as_of:number; mode:Mode; purpose:string};
+export type Series = {id:string;provider:string;code:string;name:string;entity:string;unit:string;frequency:string;description:string;source_url:string;metadata:Record<string,unknown>;captured_version_count?:number};
+export type Point = {id:string;series_id:string;period_start:string;period_end:string;value:number|null;unit:string;published_at:number|null;observed_at?:number;reconstructed_at:number|null;quality:string;precision:string;extras:Record<string,unknown>};
+export type Policy = {id:string;name:string;url:string;gate:string;warning:string;scope:string;license:string;reviewed_at:string;review_due:string;credential_env:string[];display:boolean;archive:boolean;research:boolean;training:boolean;commercial:boolean;redistribution:boolean};
+export type Provider = {policy:Policy;access:string|null;jobs:number;completed_jobs:number;committed_rows:number;raw_bytes:number;catalog_series:number;coverage:string};
+export type Status = {snapshot:number;clock_utc:string;jobs:Record<string,number>;providers:Provider[];observation_versions:number;captures:number;raw_bytes:number;free_bytes:number;disk_reserve_bytes:number;complete_all:boolean};
+export type Job = {id:string;provider:string;kind:string;resource:string;params:Record<string,unknown>;state:string;cutoff:number;cursor:Record<string,unknown>;attempts:number;lease_until:number|null;error:string|null;rows:number;bytes:number;updated_at:number};
+export type Change = {id:string;series_id:string;name:string;entity:string;period_end:string;value:number|null;unit:string;available_at:number;published_at:number|null;quality:string};
+export type SeriesResponse = {scope:Scope;series:Series;points:Point[];truncated:boolean;downsampled:boolean;warning:string};
+export type Pair = {x:string;y:string;samples:number;pearson:number|null;spearman:number|null;distance_correlation:number|null;ew_correlation:number|null;rolling:{end:number;n:number;pearson:number|null}[];lag_response:{lag:number;samples:number;pearson:number|null}[];inference:string};
+export type AnalysisResult = {state:string;kind?:string;reason?:string;matched_samples?:number;pairs?:Pair[];matched_rows?:{period_start:string;period_end:string;values:number[];observation_ids:string[]}[];series?:Series[];covariance?:{shrinkage?:number;partial?:(number|null)[][];reason?:string};limitations?:string[];scored?:Record<string,unknown>[];filtered?:{step:number;mean:number;variance:number;observations_used:number}[];epoch_day?:number;paired_interval?:{mean:number;low:number;high:number}};
+export type AnalysisEnvelope = {id:string;state:string;scope:Scope;error:string|null;result:AnalysisResult|null;request:Record<string,unknown>};
+export type Bootstrap = {token:string;snapshot:number;now:string;data_kind:string};
+export type Workspace = {id:string;name:string;payload:Record<string,unknown>;updated_at:number};

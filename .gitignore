@@ -20,3 +20,15 @@ reports/
 .env
 .env.*
 !.env.example
+
+# Native economic research and project-local tools
+.tools/
+target/
+.economic-cache/
+
+node_modules/
+
+# Observatory data and query app outputs
+.observatory/
+ui/observatory/dist/
+ui/observatory/node_modules/

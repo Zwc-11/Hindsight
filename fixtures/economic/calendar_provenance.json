@@ -1,0 +1,10 @@
+{
+  "provider": "exchange_calendars",
+  "version": "4.13.2",
+  "calendar": "XNYS",
+  "timezone": "America/New_York",
+  "start": "2026-01-05",
+  "end": "2026-04-30",
+  "sha256": "b367f7753545ad1009a3d224e9f104cc1e9086f73b2126f45e80659ed7fae856",
+  "note": "This fixed fixture is not a general-purpose exchange calendar. Export a separately pinned schedule for other periods."
+}

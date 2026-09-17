@@ -15,9 +15,11 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+economic = ["duckdb==1.5.5", "exchange-calendars==4.13.2"]
 dev = [
     "coverage[toml]>=7",
     "mypy>=1.10",
+    "pyarrow-stubs==20.0.0.20260819",
     "pytest>=8",
     "ruff>=0.5",
 ]

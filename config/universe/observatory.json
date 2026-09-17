@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "requested": "all approved provider catalog partitions",
+  "cutoff": "runtime UTC per plan",
+  "priority_wdi": [
+    "NY.GDP.MKTP.CD",
+    "NV.IND.MANF.ZS",
+    "TX.VAL.ICTG.ZS.UN",
+    "TM.VAL.ICTG.ZS.UN",
+    "NE.EXP.GNFS.CD",
+    "NE.IMP.GNFS.CD",
+    "FP.CPI.TOTL.ZG",
+    "EG.USE.ELEC.KH.PC"
+  ],
+  "market_history_from": "2016-01-01",
+  "bls_collections": [
+    "wp",
+    "pc",
+    "cu",
+    "ce"
+  ],
+  "default_data_budget_gib": 10,
+  "disk_reserve": "max(20GiB,15% volume)",
+  "historical_universe": "unverified until provider listing history is audited"
+}

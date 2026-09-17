@@ -605,7 +605,7 @@ def _average_funding_bps(
 
 
 def _funding_values_from_path(path: Path, *, coin: str) -> list[float]:
-    table = pq.read_table(path)  # type: ignore[no-untyped-call]
+    table = pq.read_table(path)
     values: list[float] = []
     for raw_row in table.to_pylist():
         row = dict(raw_row)
@@ -812,7 +812,7 @@ def _sha256(path: Path) -> str:
 
 
 def _parquet_rows(path: Path) -> int:
-    parquet = pq.ParquetFile(path)  # type: ignore[no-untyped-call]
+    parquet = pq.ParquetFile(path)
     metadata = parquet.metadata
     if metadata is None:
         return 0

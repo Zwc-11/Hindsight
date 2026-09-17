@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/caesar.z/Desktop/Hindsight/cpp/numerics",
+      "program": "/Users/caesar.z/Desktop/Hindsight/cpp/numerics/build/Debug/outDebug"
+    }
+  ]
+}

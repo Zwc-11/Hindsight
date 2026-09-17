@@ -36,6 +36,26 @@ real accounts can have tier discounts or maker rebates. No live trading. Bundled
 data labels live in
 [examples/sample_data/data_manifest.json](examples/sample_data/data_manifest.json).
 
+## Economic-information research (Rust + C++)
+
+The new native research path lives in this same repository and preserves the
+existing Hyperliquid evaluation commands. It adds point-in-time economic facts
+and relationship revisions, daily walk-forward regression, fixed-decimal
+long/cash accounting, minute-based execution, and an evidence/replay dashboard.
+The bundled demonstration is **entirely synthetic and is not profitability evidence**.
+
+```sh
+sh scripts/cargo-local.sh build --locked
+python -m hindsight.cli economic demo reports/economic-new-run
+# Open reports/economic-new-run/index.html in your browser.
+```
+
+Use `cargo build --locked` directly on machines with Rust on PATH. A C++20 compiler
+is required. Full commands, implementation boundaries and data-access instructions
+are in [Economic research](docs/economic-research.md). Run
+`bash scripts/verify-economic.sh` to exercise both the legacy and native paths.
+No broker, leverage, options or live-money execution is connected.
+
 ## Quick Start
 
 ```powershell

@@ -1,0 +1,17 @@
+import {chromium} from 'playwright';
+import fs from 'node:fs/promises';
+const out=process.argv[2]??'reports/observatory-20260916/browser-review';
+await fs.mkdir(out,{recursive:true});
+const browser=await chromium.launch({headless:true,executablePath:process.env.HINDSIGHT_CHROME??'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});
+const page=await browser.newPage({viewport:{width:1440,height:1080},reducedMotion:'reduce'});
+const errors=[];page.on('pageerror',e=>errors.push(String(e)));
+await page.goto('http://127.0.0.1:8780/',{waitUntil:'domcontentloaded'});
+await page.getByRole('heading',{name:'Economic observatory',exact:true}).waitFor();
+await page.waitForTimeout(2000);
+await page.screenshot({path:out+'/overview-desktop.png',fullPage:true});
+await page.getByRole('navigation',{name:'Main navigation'}).getByRole('button',{name:'Sources & jobs'}).click();
+await page.waitForTimeout(1500);
+await page.screenshot({path:out+'/sources-desktop.png',fullPage:true});
+await fs.writeFile(out+'/errors.json',JSON.stringify(errors,null,2));
+console.log(JSON.stringify({errors,body:(await page.locator('body').innerText()).slice(0,4000)},null,2));
+await browser.close();

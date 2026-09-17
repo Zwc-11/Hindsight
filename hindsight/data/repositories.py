@@ -255,7 +255,7 @@ def _chosen_files(directory: Path, date: str | None) -> list[Path]:
 def _limited_rows(files: Iterable[Path], limit: int) -> list[dict[str, object]]:
     rows: list[dict[str, object]] = []
     for path in files:
-        table = pq.read_table(path)  # type: ignore[no-untyped-call]
+        table = pq.read_table(path)
         rows.extend(dict(row) for row in table.to_pylist())
         if len(rows) >= limit:
             return rows[:limit]

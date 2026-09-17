@@ -786,12 +786,18 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="exit zero for coverage-only audits that do not yet satisfy Phase 0",
     )
+    economic_parser = subparsers.add_parser("economic", help="Rust/C++ economic research engine")
+    economic_parser.add_argument("native_args", nargs=argparse.REMAINDER)
     return parser
 
 
 def main(argv: Sequence[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
+    if args.command == "economic":
+        from hindsight.economic import run_native
+
+        return run_native(args.native_args)
     if args.command == "benchmark":
         benchmark_artifacts = run_benchmark(
             lake_root=args.lake_root,

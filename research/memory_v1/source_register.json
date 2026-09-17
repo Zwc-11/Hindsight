@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "status": "capability register, not proof of downloaded historical coverage",
+  "sources": [
+    {
+      "id": "alpaca",
+      "role": "minute SIP bars",
+      "access": "APCA_API_KEY_ID/APCA_API_SECRET_KEY; not provided or tested in this session",
+      "history": "must be checked using coverage output",
+      "redistribution": "not assumed"
+    },
+    {
+      "id": "sec",
+      "role": "read-only capture and narrow consolidated duration companyfacts normalization",
+      "access": "requires actual contact User-Agent",
+      "limitation": "original segment/custom document contexts and acceptance timestamps are not inferred"
+    },
+    {
+      "id": "nanya",
+      "role": "allowlisted public-source capture",
+      "limitation": "revenue is not production; intraday publication time not inferred",
+      "capture_test": {
+        "status": "passed",
+        "date_utc": "2026-09-16",
+        "url": "https://www.nanya.com/en/IR/16/?IRId=13148",
+        "sha256": "02a56f517c1f7991191cb7bb60fbd1e54bb8e52177cf8d735a6796823a38b211",
+        "bytes": 72062,
+        "verified_content": "The response contains the July 3, 2026 publication date and June 2026 monthly revenue release. No historical market-data strategy was run on this release."
+      }
+    },
+    {
+      "id": "memory-spot",
+      "role": "optional future series",
+      "access": "not verified free; no automated paid service use"
+    },
+    {
+      "id": "synthetic",
+      "role": "deterministic software testing only",
+      "rights": "redistributable generated fixtures",
+      "investment_evidence": false
+    }
+  ]
+}
