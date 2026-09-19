@@ -8,6 +8,25 @@ use std::{
     time::{Duration, Instant},
 };
 use support::*;
+fn count_parquet_files(root: &std::path::Path) -> usize {
+    let mut count = 0usize;
+    let mut pending = vec![root.to_path_buf()];
+    while let Some(dir) = pending.pop() {
+        let Ok(entries) = fs::read_dir(dir) else {
+            continue;
+        };
+        for entry in entries.flatten() {
+            let path = entry.path();
+            if path.is_dir() {
+                pending.push(path);
+            } else if path.extension().is_some_and(|ext| ext == "parquet") {
+                count += 1;
+            }
+        }
+    }
+    count
+}
+
 fn recovery_page() -> PageResult {
     let observations = (0..50000)
         .map(|i| {
@@ -60,7 +79,7 @@ fn drill(phase: &str) {
     .unwrap();
     commit(&store, &page(vec![observation(10., 1)]));
     let snapshot = store.snapshot_id().unwrap();
-    let initial = fs::read_dir(store.root.join("canonical")).unwrap().count();
+    let initial = count_parquet_files(&store.root.join("canonical"));
     let mut child = Command::new(std::env::current_exe().unwrap())
         .args(["--ignored", "--exact", "crash_writer_child", "--nocapture"])
         .env("HINDSIGHT_RECOVERY_FIXTURE", &store.root)
@@ -72,12 +91,7 @@ fn drill(phase: &str) {
     let started = Instant::now();
     loop {
         let reached = if phase == "commit" {
-            fs::read_dir(store.root.join("canonical"))
-                .unwrap()
-                .filter_map(|e| e.ok())
-                .filter(|e| e.path().extension().is_some_and(|s| s == "parquet"))
-                .count()
-                > initial
+            count_parquet_files(&store.root.join("canonical")) > initial
         } else {
             store.root.join("child-ready").exists()
         };
