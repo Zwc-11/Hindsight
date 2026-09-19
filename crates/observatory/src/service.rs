@@ -1,4 +1,4 @@
-use crate::{analysis::AnalysisRequest, model::*, sources};
+use crate::{analysis::AnalysisRequest, atlas::MissionRequest, model::*, sources};
 use axum::{
     extract::{Path, Query, Request, State},
     http::{Method, StatusCode},
@@ -115,6 +115,23 @@ pub fn router(app: App, ui: PathBuf) -> Router {
         .route("/api/plan", post(plan))
         .route("/api/workspaces", get(workspaces).post(save_workspace))
         .route("/api/replay/notes", get(notes).post(save_note))
+        .route("/api/atlas/overview", get(atlas_overview))
+        .route("/api/atlas/datasets", get(atlas_datasets))
+        .route("/api/atlas/datasets/{id}", get(atlas_dataset_detail))
+        .route(
+            "/api/atlas/datasets/{id}/observations",
+            get(atlas_observations),
+        )
+        .route(
+            "/api/atlas/distributions/{id}/sample",
+            post(sample_atlas_distribution),
+        )
+        .route("/api/atlas/graph", get(atlas_graph))
+        .route(
+            "/api/atlas/missions",
+            get(atlas_missions).post(create_atlas_mission),
+        )
+        .route("/api/atlas/missions/{id}/run", post(run_atlas_mission))
         .fallback_service(ServeDir::new(ui).append_index_html_on_directories(true))
         .layer(axum::extract::DefaultBodyLimit::max(256 * 1024))
         .layer(middleware::from_fn_with_state(app.clone(), protect))
@@ -314,6 +331,102 @@ async fn save_note(State(app): State<App>, Json(n): Json<Note>) -> Api<Value> {
         .await?,
     ))
 }
+
+async fn atlas_overview(State(app): State<App>) -> Api<Value> {
+    Ok(Json(blocking(&app, |s| s.atlas_overview()).await?))
+}
+async fn atlas_datasets(State(app): State<App>, Query(q): Query<Params>) -> Api<Value> {
+    Ok(Json(blocking(&app, move |s| {
+        Ok(json!({"rows":s.atlas_datasets(q.search.as_deref().unwrap_or(""),q.limit.unwrap_or(100))?}))
+    }).await?))
+}
+
+async fn atlas_dataset_detail(State(app): State<App>, Path(id): Path<String>) -> Api<Value> {
+    Ok(Json(
+        blocking(&app, move |s| s.atlas_dataset_detail(&id)).await?,
+    ))
+}
+async fn atlas_observations(
+    State(app): State<App>,
+    Path(id): Path<String>,
+    Query(q): Query<Params>,
+) -> Api<Value> {
+    Ok(Json(
+        blocking(&app, move |s| {
+            let as_of = q
+                .as_of
+                .as_deref()
+                .map(time)
+                .transpose()?
+                .unwrap_or_else(now);
+            s.atlas_observations(
+                &id,
+                q.mode.as_deref().unwrap_or("observed"),
+                as_of,
+                q.limit.unwrap_or(1000),
+            )
+        })
+        .await?,
+    ))
+}
+#[derive(Deserialize)]
+struct AtlasSample {
+    max_bytes: Option<u64>,
+}
+async fn sample_atlas_distribution(
+    State(app): State<App>,
+    Path(id): Path<String>,
+    Json(r): Json<AtlasSample>,
+) -> Api<Value> {
+    Ok(Json(
+        blocking(&app, move |s| {
+            s.sample_atlas_distribution(&id, r.max_bytes.unwrap_or(8 * 1024 * 1024))
+        })
+        .await?,
+    ))
+}
+
+async fn atlas_graph(State(app): State<App>, Query(q): Query<Params>) -> Api<Value> {
+    Ok(Json(
+        blocking(&app, move |s| {
+            let as_of = q
+                .as_of
+                .as_deref()
+                .map(time)
+                .transpose()?
+                .unwrap_or_else(now);
+            s.atlas_graph(
+                q.search.as_deref().unwrap_or(""),
+                as_of,
+                q.limit.unwrap_or(100),
+            )
+        })
+        .await?,
+    ))
+}
+async fn atlas_missions(State(app): State<App>, Query(q): Query<Params>) -> Api<Value> {
+    Ok(Json(
+        blocking(&app, move |s| {
+            Ok(json!({"missions":s.atlas_missions(q.limit.unwrap_or(50))?}))
+        })
+        .await?,
+    ))
+}
+async fn create_atlas_mission(State(app): State<App>, Json(r): Json<MissionRequest>) -> Api<Value> {
+    Ok(Json(
+        blocking(&app, move |s| {
+            let id = s.create_atlas_mission(&r)?;
+            Ok(json!({"id":id,"state":"queued","query":r.query}))
+        })
+        .await?,
+    ))
+}
+async fn run_atlas_mission(State(app): State<App>, Path(id): Path<String>) -> Api<Value> {
+    Ok(Json(
+        blocking(&app, move |s| s.run_atlas_mission(&id)).await?,
+    ))
+}
+
 pub async fn serve(store: Store, port: u16, ui: PathBuf, worker: bool) -> Result<()> {
     let token = Arc::new(uuid::Uuid::new_v4().to_string());
     let app = App {

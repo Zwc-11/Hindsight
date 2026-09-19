@@ -1,4 +1,6 @@
 pub mod analysis;
+pub mod atlas;
+pub mod atlas_acquisition;
 pub mod capacity;
 pub mod catalog;
 pub mod fetch;
@@ -6,6 +8,7 @@ pub mod forecast;
 pub mod math;
 pub mod model;
 pub mod operations;
+pub mod protocols;
 pub mod query;
 pub mod service;
 pub mod sources;

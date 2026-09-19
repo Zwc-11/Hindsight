@@ -1,0 +1,20 @@
+[
+  {
+    "id": "statcan-published-aggregate",
+    "name": "Statistics Canada published aggregate data",
+    "host_scope": ["www150.statcan.gc.ca", "statcan.gc.ca"],
+    "state": "reviewed_open_resource",
+    "sample_allowed": true,
+    "archive": true,
+    "display": true,
+    "research": true,
+    "training": true,
+    "commercial": true,
+    "redistribution": true,
+    "max_sample_bytes": 8388608,
+    "license": "Statistics Canada Open Licence",
+    "terms_url": "https://www.statcan.gc.ca/en/terms-conditions/open-licence",
+    "reviewed_at": "2026-09-17",
+    "warning": "Published aggregate information only. Preserve attribution and do not link data to attempt identification of a person, business, or organization."
+  }
+]

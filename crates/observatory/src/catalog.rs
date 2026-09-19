@@ -36,6 +36,28 @@ impl Store {
             ))?;
             c.execute("INSERT INTO schema_migrations VALUES(3,?1)", [now()])?;
         }
+        let atlas_applied: bool = c.query_row(
+            "SELECT EXISTS(SELECT 1 FROM schema_migrations WHERE version=4)",
+            [],
+            |r| r.get(0),
+        )?;
+        if !atlas_applied {
+            c.execute_batch(include_str!(
+                "../../../migrations/observatory/004_atlas.sql"
+            ))?;
+            c.execute("INSERT INTO schema_migrations VALUES(4,?1)", [now()])?;
+        }
+        let acquisition_applied: bool = c.query_row(
+            "SELECT EXISTS(SELECT 1 FROM schema_migrations WHERE version=5)",
+            [],
+            |r| r.get(0),
+        )?;
+        if !acquisition_applied {
+            c.execute_batch(include_str!(
+                "../../../migrations/observatory/005_atlas_acquisition.sql"
+            ))?;
+            c.execute("INSERT INTO schema_migrations VALUES(5,?1)", [now()])?;
+        }
         let policies: Vec<Policy> =
             serde_json::from_str(include_str!("../../../config/sources/observatory.json"))?;
         for p in policies {
@@ -58,6 +80,7 @@ impl Store {
             )?;
             c.execute("INSERT INTO providers(id,name,policy_version) VALUES(?1,?2,?3) ON CONFLICT(id) DO UPDATE SET name=excluded.name,policy_version=excluded.policy_version",params![p.id,p.name,p.version])?;
         }
+        store.bootstrap_atlas()?;
         Ok(store)
     }
     pub fn connect(&self) -> Result<Connection> {

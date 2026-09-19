@@ -262,3 +262,116 @@ async fn replay_notes_do_not_preload_outcomes() {
     assert_eq!(v["outcomes_preloaded"], false);
     assert!(v.get("outcome").is_none());
 }
+
+#[tokio::test]
+async fn atlas_starts_world_empty_and_mission_creation_is_session_protected() {
+    let (_d, s) = setup();
+    let (status, v) = get(&s, "/api/atlas/overview").await;
+    assert_eq!(status, StatusCode::OK);
+    assert_eq!(v["scope"], "WORLD");
+    assert_eq!(v["datasets"], 0);
+    assert!(v["claim"]
+        .as_str()
+        .unwrap()
+        .contains("no global completeness"));
+
+    let payload = json!({"query":"copper","max_requests":4,"max_bytes":1048576,"max_depth":1,"max_sources":8});
+    let (status, _) = post(&s, "/api/atlas/missions", payload.clone(), "wrong").await;
+    assert_eq!(status, StatusCode::FORBIDDEN);
+    let (status, created) = post(&s, "/api/atlas/missions", payload, "test-local-session").await;
+    assert_eq!(status, StatusCode::OK);
+    assert_eq!(created["state"], "queued");
+    let missions = s.atlas_missions(10).unwrap();
+    assert_eq!(missions.len(), 1);
+    assert_eq!(missions[0]["query"], "copper");
+    assert_eq!(missions[0]["requests_used"], 0);
+}
+
+#[tokio::test]
+async fn atlas_historical_graph_api_does_not_leak_future_edges() {
+    let (_d, s) = setup();
+    let c = s.connect().unwrap();
+    c.execute(
+        "INSERT INTO atlas_entities VALUES('past','Company','Past Co',1000,'{}')",
+        [],
+    )
+    .unwrap();
+    c.execute(
+        "INSERT INTO atlas_entities VALUES('product','Product','Widget',1000,'{}')",
+        [],
+    )
+    .unwrap();
+    c.execute("INSERT INTO atlas_edges VALUES('future-edge','knowledge','past','product','manufactures',500,NULL,3000,NULL,NULL,'{}')",[]).unwrap();
+    let (_, early) = get(&s, "/api/atlas/graph?as_of=1970-01-01T00:00:02Z").await;
+    assert_eq!(early["nodes"].as_array().unwrap().len(), 2);
+    assert!(early["edges"].as_array().unwrap().is_empty());
+    let (_, late) = get(&s, "/api/atlas/graph?as_of=1970-01-01T00:00:04Z").await;
+    assert_eq!(late["edges"].as_array().unwrap().len(), 1);
+}
+
+#[tokio::test]
+async fn atlas_unreviewed_resource_host_is_blocked_before_network_use() {
+    let (_d, s) = setup();
+    let c = s.connect().unwrap();
+    c.execute("INSERT INTO atlas_sources VALUES('src','https://catalog.example','catalog.example','ckan','reviewed_open_metadata',1000,NULL,0,'{}')",[]).unwrap();
+    c.execute("INSERT INTO atlas_datasets VALUES('d1','src','x','Unsafe resource','',NULL,NULL,'null','null','[]',1000,'{}')",[]).unwrap();
+    c.execute("INSERT INTO atlas_distributions VALUES('dist1','d1','https://evil.example/data.csv','text/csv','CSV','catalog_metadata_only','{}')",[]).unwrap();
+    let (status, body) = post(
+        &s,
+        "/api/atlas/distributions/dist1/sample",
+        json!({"max_bytes":4096}),
+        "test-local-session",
+    )
+    .await;
+    assert_eq!(status, StatusCode::FORBIDDEN);
+    assert!(body["error"]
+        .as_str()
+        .unwrap()
+        .contains("blocked_permission"));
+    let count: i64 = c
+        .query_row(
+            "SELECT COUNT(*) FROM atlas_distribution_profiles",
+            [],
+            |r| r.get(0),
+        )
+        .unwrap();
+    assert_eq!(count, 0);
+}
+
+#[tokio::test]
+async fn atlas_current_vintage_observations_never_leak_into_reconstructed_history() {
+    let (_d, s) = setup();
+    let c = s.connect().unwrap();
+    c.execute("INSERT INTO atlas_sources VALUES('src','https://catalog.example','catalog.example','ckan','reviewed_open_metadata',1000,NULL,0,'{}')",[]).unwrap();
+    c.execute("INSERT INTO atlas_datasets VALUES('d1','src','x','Observed only','',NULL,NULL,'null','null','[]',1000,'{}')",[]).unwrap();
+    c.execute("INSERT INTO atlas_distributions VALUES('dist1','d1','https://www150.statcan.gc.ca/data.csv','text/csv','CSV','reviewed_open_metadata','{}')",[]).unwrap();
+    c.execute("INSERT INTO atlas_observations VALUES('o1','d1','dist1','s1','2024-01-01','2024-01-31',12.0,'TJ','{}',NULL,2000,'current_vintage_observed_only','{}')",[]).unwrap();
+    let (_, observed) = get(
+        &s,
+        "/api/atlas/datasets/d1/observations?mode=observed&as_of=1970-01-01T00:00:03Z",
+    )
+    .await;
+    assert_eq!(observed["rows"].as_array().unwrap().len(), 1);
+    let (_, reconstructed) = get(
+        &s,
+        "/api/atlas/datasets/d1/observations?mode=reconstructed&as_of=1970-01-01T00:00:03Z",
+    )
+    .await;
+    assert!(reconstructed["rows"].as_array().unwrap().is_empty());
+    assert!(reconstructed["reason"]
+        .as_str()
+        .unwrap()
+        .contains("no verified historical publication clock"));
+}
+
+#[tokio::test]
+async fn atlas_dataset_list_does_not_expose_raw_provider_payload() {
+    let (_d, s) = setup();
+    let c = s.connect().unwrap();
+    c.execute("INSERT INTO atlas_sources VALUES('src','https://catalog.example','catalog.example','ckan','reviewed_open_metadata',1000,NULL,0,'{}')",[]).unwrap();
+    c.execute("INSERT INTO atlas_datasets VALUES('d1','src','x','Public title','Public description',NULL,NULL,'null','null','[]',1000,'{\"secret_marker\":\"source-internal-blob\"}')",[]).unwrap();
+    let (status, v) = get(&s, "/api/atlas/datasets?search=Public").await;
+    assert_eq!(status, StatusCode::OK);
+    assert_eq!(v["rows"].as_array().unwrap().len(), 1);
+    assert!(!v.to_string().contains("source-internal-blob"));
+}

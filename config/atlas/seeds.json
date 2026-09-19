@@ -1,0 +1,68 @@
+[
+  {
+    "id": "canada-ckan",
+    "name": "Government of Canada Open Data",
+    "protocol": "ckan",
+    "base_url": "https://open.canada.ca/data/en/api/3/action/package_search",
+    "enabled": true,
+    "rights": {
+      "state": "reviewed_open_metadata",
+      "display": true,
+      "archive": true,
+      "research": true,
+      "training": false,
+      "license": "Open Government Licence - Canada / dataset-specific resources may differ",
+      "host_scope": ["open.canada.ca"],
+      "reviewed_at": "2026-09-17"
+    }
+  },
+  {
+    "id": "uk-ckan",
+    "name": "UK National Data Library Directory",
+    "protocol": "ckan",
+    "base_url": "https://data.gov.uk/api/action/package_search",
+    "enabled": true,
+    "rights": {      "state": "reviewed_open_metadata",
+      "display": true,
+      "archive": true,
+      "research": true,
+      "training": false,
+      "license": "catalog metadata; dataset resources remain dataset-specific",
+      "host_scope": ["data.gov.uk", "ckan.publishing.service.gov.uk"],
+      "reviewed_at": "2026-09-17"
+    }
+  },
+  {
+    "id": "nasa-cmr-stac",
+    "name": "NASA Earthdata CMR STAC",
+    "protocol": "stac",
+    "base_url": "https://cmr.earthdata.nasa.gov/stac/",
+    "enabled": true,
+    "rights": {
+      "state": "reviewed_open_metadata",
+      "display": true,
+      "archive": true,
+      "research": true,
+      "training": false,
+      "license": "NASA CMR metadata; individual collections/assets retain source-specific rights",
+      "host_scope": ["cmr.earthdata.nasa.gov"],
+      "reviewed_at": "2026-09-17"
+    }
+  },  {
+    "id": "imf-sdmx",
+    "name": "IMF SDMX Central",
+    "protocol": "sdmx",
+    "base_url": "https://sdmxcentral.imf.org/sdmx/v2/dataflow/IMF/all/latest?detail=allstubs",
+    "enabled": false,
+    "rights": {
+      "state": "review_required_before_bulk",
+      "display": true,
+      "archive": false,
+      "research": true,
+      "training": false,
+      "license": "metadata/API use requires source-specific review before bulk acquisition",
+      "host_scope": ["sdmxcentral.imf.org"],
+      "reviewed_at": "2026-09-17"
+    }
+  }
+]

@@ -60,6 +60,26 @@ enum Command {
     Backup {
         output: PathBuf,
     },
+    AtlasMission {
+        query: String,
+        #[arg(long, default_value_t = 8)]
+        max_requests: usize,
+        #[arg(long, default_value_t = 8_388_608)]
+        max_bytes: u64,
+        #[arg(long, default_value_t = 2)]
+        max_depth: usize,
+        #[arg(long)]
+        run: bool,
+    },
+    AtlasStatus {
+        #[arg(long, default_value = "")]
+        search: String,
+    },
+    AtlasAcquire {
+        distribution_id: String,
+        #[arg(long, default_value_t = 8_388_608)]
+        max_bytes: u64,
+    },
 }
 #[tokio::main]
 async fn main() {
@@ -108,6 +128,47 @@ async fn run() -> Result<()> {
             )?)?
         }
         Command::Backup { output } => store.backup(&output)?,
+        Command::AtlasMission {
+            query,
+            max_requests,
+            max_bytes,
+            max_depth,
+            run,
+        } => {
+            let request = hindsight_observatory::atlas::MissionRequest {
+                query,
+                max_requests,
+                max_bytes,
+                max_depth,
+                max_sources: 20,
+            };
+            let id = store.create_atlas_mission(&request)?;
+            if run {
+                let runner = store.clone();
+                let run_id = id.clone();
+                tokio::task::spawn_blocking(move || runner.run_atlas_mission(&run_id))
+                    .await
+                    .map_err(|_| invalid("Atlas mission task failed"))??
+            } else {
+                serde_json::json!({"id":id,"state":"queued"})
+            }
+        }
+        Command::AtlasStatus { search } => serde_json::json!({
+            "overview": store.atlas_overview()?,
+            "datasets": store.atlas_datasets(&search, 100)?,
+            "missions": store.atlas_missions(20)?,
+        }),
+        Command::AtlasAcquire {
+            distribution_id,
+            max_bytes,
+        } => {
+            let runner = store.clone();
+            tokio::task::spawn_blocking(move || {
+                runner.sample_atlas_distribution(&distribution_id, max_bytes)
+            })
+            .await
+            .map_err(|_| invalid("Atlas acquisition task failed"))??
+        }
     };
     println!("{}", serde_json::to_string_pretty(&out)?);
     Ok(())
